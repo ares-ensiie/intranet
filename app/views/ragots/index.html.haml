@@ -1,0 +1,12 @@
+= form_tag "/ragots", :remote => false, :'data-type' => 'html' do |f|
+  = text_area_tag :content, "Nouveau ragot", :rows => 2
+  = submit_tag "Envoyer", :class => "btn"
+
+- if !@ragots.empty?
+  %ul#ragots_list
+    - @ragots.order_by(:date.desc).each do |r|
+      %li.ragot
+        = r.content + " - " + (l r.date, :format => :short)
+
+
+
