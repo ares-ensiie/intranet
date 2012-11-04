@@ -4,12 +4,14 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   ## Database authenticatable
+  field :username,           :type => String, :default => ""
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
+  validates :username, :uniqueness => true, :presence => true
   validates_presence_of :email
   validates_presence_of :encrypted_password
   
@@ -40,4 +42,8 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+  
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+
+  has_many :ragots, class_name: "Ragot"
 end
