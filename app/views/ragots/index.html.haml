@@ -1,7 +1,9 @@
 %h2 Les ragots des iiens
 
+%p.background IL PARAIT QUE
+
 = form_tag "/ragots", :remote => false, :'data-type' => 'html' do |f|
-  = text_area_tag :content, "Nouveau ragot", :rows => 2
+  = text_area_tag :content, "Nouveau Ragot", :rows => 2
   = submit_tag "Envoyer", :class => "btn"
 
 - if !@ragots.empty?

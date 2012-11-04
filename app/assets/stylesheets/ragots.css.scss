@@ -5,6 +5,12 @@
 $brown: #E0D99F;
 $font-color: #543927;
 
+@font-face
+{
+  font-family: BistroBlock;
+  src: url('/BistroBlock.ttf');
+}
+
 li.ragot {
   margin: 10px 15px 15px 10px;
   padding: 3px 0px 3px 10px;
@@ -20,4 +26,18 @@ span.ragot_date {
   top: 12px;
   font-weight: bold;
   text-shadow: #AAA 1px 1px 1px;
+}
+
+$back-txt-color: #F5D1B3;
+$back-txt-shadow: darken($back-txt-color, 5%);
+
+p.background {
+  float: right;
+  margin-right: 30%;
+  margin-top: 15px;
+
+  color: $back-txt-color;
+  font-size: 36pt;
+  font-family: BistroBlock;
+  text-shadow: $back-txt-shadow 2px 2px 5px;
 }
