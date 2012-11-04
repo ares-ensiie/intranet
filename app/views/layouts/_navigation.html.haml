@@ -1,0 +1,10 @@
+%ul.nav
+  %li
+    = link_to "Acceuil", root_path
+  %li 
+    = link_to "Ragots", ragots_path
+%p.navbar-text.pull-right
+  - if !current_user
+    = link_to "Connexion", new_user_session_path
+  - else
+    = link_to "Connecté : " + current_user.username, edit_user_registration_path
