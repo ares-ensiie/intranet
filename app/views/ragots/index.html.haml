@@ -1,3 +1,5 @@
+%h2 Les ragots des iiens
+
 = form_tag "/ragots", :remote => false, :'data-type' => 'html' do |f|
   = text_area_tag :content, "Nouveau ragot", :rows => 2
   = submit_tag "Envoyer", :class => "btn"
@@ -6,7 +8,9 @@
   %ul#ragots_list
     - @ragots.order_by(:date.desc).each do |r|
       %li.ragot
-        = r.content + " - " + (l r.date, :format => :short)
+        = r.content
+        %span.ragot_date
+          = l r.date, :format => :short
 
 
 
