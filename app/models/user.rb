@@ -3,8 +3,7 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable
 
   ## Database authenticatable
   field :username,           :type => String, :default => ""
@@ -16,8 +15,8 @@ class User
   validates_presence_of :encrypted_password
   
   ## Recoverable
-  field :reset_password_token,   :type => String
-  field :reset_password_sent_at, :type => Time
+  # field :reset_password_token,   :type => String
+  # field :reset_password_sent_at, :type => Time
 
   ## Rememberable
   field :remember_created_at, :type => Time
