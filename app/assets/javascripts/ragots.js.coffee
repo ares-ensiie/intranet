@@ -5,7 +5,8 @@
 focus_ragot = (event)  =>
   c = String.fromCharCode event.which
   if /[_-a-zA-Z0-9]/.test(c) or event.type == "click"
-    $("textarea").val ""
+    if $("textarea").val() == "Nouveau Ragot"
+      $("textarea").val ""
     $("textarea").focus()
 
 $ ->
