@@ -1,7 +1,7 @@
 IntranetSXB::Application.routes.draw do
   devise_for :users
 
-  resources :ragots do
+  resources :ragots do 
   end
 
   # The priority is based upon order of creation:
