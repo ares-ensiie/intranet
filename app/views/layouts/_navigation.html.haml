@@ -7,4 +7,4 @@
   - if !current_user
     = link_to "Connexion", new_user_session_path
   - else
-    = link_to "Connecté : " + current_user.username, edit_user_registration_path
+    = link_to "Connecté : " + current_user.username, root_path

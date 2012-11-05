@@ -5,10 +5,6 @@ class RagotsController < ApplicationController
     @ragots = Ragot.all
   end 
 
-  def refresh
-    
-  end
-
   def create
     ragot = Ragot.new(params)
     ragot.date = DateTime.now
