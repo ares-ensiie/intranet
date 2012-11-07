@@ -14,6 +14,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass'
+  gem 'bootstrap-addons-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -29,6 +30,9 @@ gem 'grape'
 gem 'devise'
 gem 'omniauth-ldap', :git => 'https://github.com/ares-ensiie/omniauth-ldap.git'
 gem 'mongoid'
+
+# To resize images
+gem "rmagick"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

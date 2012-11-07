@@ -3,6 +3,8 @@
     = link_to "Acceuil", root_path
   %li 
     = link_to "Ragots", ragots_path
+  %li 
+    = link_to "Galerie", gallery_path
 %p.navbar-text.pull-right
   - if !current_user
     = link_to "Connexion", new_user_session_path

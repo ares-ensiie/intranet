@@ -55,5 +55,8 @@ module IntranetSXB
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Height of the thumbnails in the album#show view 
+    config.thumb_height = 200
   end
 end
