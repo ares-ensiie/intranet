@@ -2,11 +2,12 @@
   .row
     .page-header
       %h1
+        = link_to "←", gallery_path
         = @album.name
     - if !@photos.empty?
       #gallery{ "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
         - @photos.each do |p|
-          = link_to (image_tag p.thumb_path), p.photo_path , :rel => "gallery", :title => p.name
+          = link_to (image_tag thumb_photo_path(p)), p , :rel => "gallery", :title => p.name
 
 = render 'album/modal' 
 

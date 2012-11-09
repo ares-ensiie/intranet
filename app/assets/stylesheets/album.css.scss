@@ -2,4 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 @import "bootstrap/image-gallery";
+@import "jquery.fileupload-ui";
+
+#droparea {
+  float:left;
+  width: 300px;
+  height: 150px;
+  background-color: #ddd;
+  border-radius: 5px;
+  border-style: solid;
+
+  .dropping {
+    background-color: #bbb;
+  }
+
+  p {
+    text-align: center;
+  }
+  input {
+    float: left;
+  }
+}
+
+.uploaded_photos {
+  display: hidden
+}

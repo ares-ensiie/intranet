@@ -1,10 +1,12 @@
 IntranetSXB::Application.routes.draw do
   devise_for :users
 
-  resources :ragots do  end
-  resources :album do  end
+  resources :ragots, :album 
 
-  match "/gallery" => "gallery#index"
+  resources :photos
+  get '/photos/thumb/:id' =>  'photos#thumb', :as => "thumb_photo"
+
+  match "/gallery" => "gallery#index", :as => "gallery"
 
 
   # The priority is based upon order of creation:
