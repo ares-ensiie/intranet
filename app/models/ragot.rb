@@ -1,6 +1,8 @@
 class Ragot
   include Mongoid::Document
 
+  attr_accessible :content, :date, :score
+
   field "content", :type => String, :default => ""
   field "date", :type => DateTime, :default => nil
   field "score", :type => Integer, :default => 0
