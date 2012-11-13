@@ -3,6 +3,12 @@ class RagotsController < ApplicationController
 
   def index
     @ragots = Ragot.all
+
+    respond_to do |format|
+      format.json {
+        render :json => @ragots.to_json(:only => [:_id, :content, :score, :date])
+      }
+    end
   end 
 
   def create
