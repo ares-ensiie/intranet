@@ -1,18 +1,14 @@
 class AlbumController < ApplicationController
   before_filter :authenticate_user!
 
-  def show
-    @album = Album.find params[:id]
-    @photos = @album.photos
+  def index 
+    redirect_to "/gallery"
+  end
 
-    @photos.each do |p|
-      if !FileTest.exists? p.thumb_path then
-        p.make_thumbnail
-      end
-    end
+  def show
+    @album = Album.find(params[:id])
   end
 
   def new
-
   end
 end

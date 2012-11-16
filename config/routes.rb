@@ -4,7 +4,6 @@ IntranetSXB::Application.routes.draw do
   resources :ragots, :album 
 
   resources :photos
-  get '/photos/thumb/:id' =>  'photos#thumb', :as => "thumb_photo"
 
   match "/gallery" => "gallery#index", :as => "gallery"
 
