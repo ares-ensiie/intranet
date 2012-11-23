@@ -3,6 +3,7 @@ class Album
 
   field :name, :type => String, :default => ""
   field :desc, :type => String, :default => ""
+  field :date, :type => DateTime
   validates :name, :presence => true, :uniqueness => true
 
   belongs_to :author, :class_name => "User"

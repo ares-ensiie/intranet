@@ -1,0 +1,16 @@
+= form_for @album do |f|
+  -if !@album.errors.empty?
+    .text-error
+      Échec de la création de l'album :
+      %ul
+        - @album.errors.map do |k,v|
+          %li
+            = k.to_s.capitalize + " : " + v.to_s
+  = f.label :name, "Nom"
+  = f.text_field :name, class: "textfield"
+  = f.label :desc, "Description"
+  = f.text_area :desc, rows: 4
+  = f.label :date, "Date"
+  = f.date_select :date, :order => [:day, :month, :year]
+  %br
+  = f.submit
