@@ -1,7 +1,7 @@
 IntranetSXB::Application.routes.draw do
   devise_for :users
 
-  resources :ragots, :album 
+  resources :ragots, :albums
 
   resources :photos
 
