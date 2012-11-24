@@ -1,4 +1,4 @@
-= form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
+= form_for Photo.new, :url => album_photos_path(@album), :html => { :multipart => true, :id => "fileupload"  } do |f|
   .row.fileupload-buttonbar
     .span7
       %span.btn.btn-success.fileinput-button

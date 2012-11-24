@@ -38,7 +38,7 @@
 
         if ($.support.cors) {
             $.ajax({
-                url:'//jquery-file-upload.appspot.com/',
+                url:'/albums/new',
                 type:'HEAD'
             }).fail(function () {
                         $('<span class="alert alert-error"/>')

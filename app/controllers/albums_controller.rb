@@ -11,12 +11,16 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = Album.create
+    @album = Album.new
   end
 
   def create 
-    @album = current_user.albums.create(params[:album], :author => current_user)  
-    redirect_to edit_album_path(@album)
+    @album = current_user.albums.create(params[:album], :author => current_user)
+    if(@album.errors.empty?) then 
+      redirect_to edit_album_path(@album)
+    else 
+      render "albums/new"
+    end
   end
 
   def edit 

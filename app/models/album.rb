@@ -6,6 +6,6 @@ class Album
   field :date, :type => DateTime
   validates :name, :presence => true, :uniqueness => true
 
-  belongs_to :author, :class_name => "User"
+  belongs_to :author, :class_name => "User", :inverse_of => :albums
   has_many :photos, :class_name => "Photo"
 end

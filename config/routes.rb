@@ -1,7 +1,11 @@
 IntranetSXB::Application.routes.draw do
   devise_for :users
 
-  resources :ragots, :albums, :photos
+  resources :ragots
+
+  resources :albums do 
+    resources :photos
+  end
   match "/gallery" => "gallery#index", :as => "gallery"
 
   # /courses => courses_promos_path 
