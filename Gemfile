@@ -31,6 +31,7 @@ gem 'grape'
 gem 'devise'
 gem 'omniauth-ldap', :git => 'https://github.com/ares-ensiie/omniauth-ldap.git'
 gem 'mongoid'
+gem 'doorkeeper'
 
 # To resize images
 gem "rmagick"
