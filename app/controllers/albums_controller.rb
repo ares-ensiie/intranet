@@ -29,8 +29,15 @@ class AlbumsController < ApplicationController
 
   def update 
     @album = Album.find(params[:id])
-    @album.update_attributes(params)
-    @album.save
+    new_date = DateTime.new(
+      params[:album]["date(1i)"].to_i,
+      params[:album]["date(2i)"].to_i,
+      params[:album]["date(3i)"].to_i
+    )
+    params[:album].delete("date(3i)")
+    params[:album].delete("date(2i)")
+    params[:album].delete("date(1i)")
+    @album.update_attributes(params[:album], :date => new_date)
     if(@album.errors.empty?) then
       respond_with(@album)
     else

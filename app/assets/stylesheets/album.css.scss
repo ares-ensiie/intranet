@@ -6,22 +6,10 @@
 @import "bootstrap/image-gallery";
 @import "jquery.fileupload-ui";
 
-#droparea {
-  float:left;
-  width: 300px;
-  height: 150px;
-  background-color: #ddd;
-  border-radius: 5px;
-  border-style: solid;
-
-  .dropping {
-    background-color: #bbb;
-  }
-
-  p {
-    text-align: center;
-  }
-  input {
-    float: left;
-  }
+.album_desc {
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+  min-height: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
 }

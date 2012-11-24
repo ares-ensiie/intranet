@@ -3,14 +3,17 @@
     .page-header
       %h1
         = link_to "←", gallery_path
-        = @album.name 
+        = @album.name
+        &nbsp; 
         - if @album.author.eql?(current_user)
           = link_to "Éditer", edit_album_path(@album)
+
+    %h2 Description
+    %p.album_desc=@album.desc
     - if !@album.photos.empty?
       #gallery{ "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
         - @album.photos.each do |p|
           = link_to (image_tag p.photo.url(:thumb)), p.photo.url , :rel => "gallery", :title => p.name
 
 = render 'albums/modal' 
-
-
+= javascript_include_tag "albums"
