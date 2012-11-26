@@ -3,9 +3,15 @@ IntranetSXB::Application.routes.draw do
 
   devise_for :users
 
-  resources :ragots do  end
-  resources :album do  end
+  resources :ragots
 
+  # /gallery
+  namespace "gallery" do 
+    match "/" => "gallery#index"
+    resources :albums, except: :index do 
+      resources :photos
+    end
+  end 
   # /courses => courses_promos_path 
   namespace :courses do
     # /courses/:promo => courses_promos_matters_path
@@ -17,9 +23,6 @@ IntranetSXB::Application.routes.draw do
       end
     end
   end
-
-  match "/gallery" => "gallery#index"
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -44,7 +44,7 @@ class User
   
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
 
-  has_many :ragots, class_name: "Ragot"
-  has_many :albums, class_name: "Album"
+  has_many :ragots, class_name: "Ragot", inverse_of: :author
+  has_many :albums, class_name: "Album", inverse_of: :author
   has_many :documents, class_name: "Document", inverse_of: :author
 end

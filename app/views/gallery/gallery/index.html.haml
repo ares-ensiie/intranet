@@ -1,0 +1,11 @@
+.container
+  .page-header
+    %h1 La galerie des iiens
+
+  - if !@albums.empty?
+    %ul.albums 
+      - @albums.each do |a|
+        %li
+          = link_to a.name + " Nombre de photos : " + a.photos.count.to_s , gallery_album_path(a)
+
+  = link_to "Proposer un album", new_album_path

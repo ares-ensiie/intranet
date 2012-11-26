@@ -1,0 +1,68 @@
+<script>
+    $(function () {
+        'use strict';
+
+        // Initialize the jQuery File Upload widget:
+        $('#fileupload').fileupload();
+
+        // Enable iframe cross-domain access via redirect option:
+        $('#fileupload').fileupload(
+                'option',
+                'redirect',
+                window.location.href.replace(
+                        /\/[^\/]*$/,
+                        '/cors/result.html?%s'
+                )
+        );
+
+        $('#fileupload').fileupload('option', {
+            maxFileSize:10000000,
+            acceptFileTypes:/(\.|\/)(gif|jpe?g|png)$/i,
+            sequentialUploads:true,
+            process:[
+                {
+                    action:'load',
+                    fileTypes:/^image\/(gif|jpeg|png)$/,
+                    maxFileSize:20000000 // 20MB
+                },
+                {
+                    action:'resize',
+                    maxWidth:2048,
+                    maxHeight:2048
+                },
+                {
+                    action:'save'
+                }
+            ]
+        });
+
+        if ($.support.cors) {
+            $.ajax({
+                url:'/albums/new',
+                type:'HEAD'
+            }).fail(function () {
+                        $('<span class="alert alert-error"/>')
+                                .text('Upload server currently unavailable - ' +
+                                new Date())
+                                .appendTo('#fileupload');
+                    });
+        }
+
+
+        // Load existing files:
+        $('#fileupload').each(function () {
+            var that = this;
+            $.getJSON(this.action, function (result) {
+                if (result && result.length) {
+                    $(that).fileupload('option', 'done')
+                            .call(that, null, {result:result});
+                }
+            });
+        });
+
+
+    });
+
+</script>
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
+<!--[if gte IE 8]><script src="/javascripts/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script><![endif]-->

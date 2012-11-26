@@ -1,0 +1,43 @@
+= form_for Photo.new, :url => album_photos_path(@album), :html => { :multipart => true, :id => "fileupload"  } do |f|
+  .row.fileupload-buttonbar
+    .span7
+      %span.btn.btn-success.fileinput-button
+        %i.icon-plus.icon-white
+        %span
+          = t('fileupload.add_files')
+        = f.file_field :path, :multiple => true
+      %button.btn.btn-primary.start{:type=>"submit"}
+        %i.icon-upload.icon-white
+        %span
+          = t('fileupload.start_upload')
+      %button.btn.btn-warning.cancel{:type => "reset"}
+        %i.icon-ban-circle.icon-white
+        %span>
+          = t('fileupload.cancel_upload')
+      %button.btn.btn-danger.delete{:type => "button"}
+        %i.icon-trash.icon-white
+        %span>
+          = t('fileupload.delete_multi')
+      %input.toggle{:type=>"checkbox"}
+    .span5
+      .progress.progress-success.progress-striped.active.fade
+        .bar{:style=>"width:0%;"}
+  .fileupload-loading
+  %br
+  %table.table.table-striped
+    %tbody.files{"data-toggle"=>"modal-gallery", "data-target"=>"#modal-gallery"}
+
+:javascript
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+
+= render "gallery/albums/fileupload/queue"
+= render "gallery/albums/fileupload/index"
+= render "gallery/albums/fileupload/js_include_local" 
+

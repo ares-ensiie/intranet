@@ -4,3 +4,16 @@
 #
 #= require bootstrap/load-image.min
 #= require bootstrap/image-gallery.min
+#= require jquery-fileupload
+#
+
+$ ->
+  $("#album_fileinput").fileupload {
+    dataType: 'json',
+    done: (e,data) =>
+      $.each data.result, (index, file) =>
+        $('<p/>').text(file.name).appendTo document.body
+  }
+
+
+
