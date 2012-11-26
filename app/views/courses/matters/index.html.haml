@@ -1,0 +1,11 @@
+.container
+  .page-header
+    %h1 
+      =link_to "←", courses_promos_path
+      =link_to "Cours", courses_promos_path
+      ="/"
+      =link_to @promo, courses_promo_matters_path(@promo)
+  %ul
+    - @courses.each do |c|
+      %li=link_to c, courses_promo_matter_documents_path(@promo, c)
+

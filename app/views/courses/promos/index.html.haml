@@ -1,0 +1,9 @@
+.container 
+  .page-header
+    %h1
+      =link_to "←", root_path
+      =link_to "Cours", courses_promos_path
+  %ul
+    %li=link_to "1A", courses_promo_matters_path("1A")
+    %li=link_to "2A", courses_promo_matters_path("2A")
+    %li=link_to "3A", courses_promo_matters_path("3A")
