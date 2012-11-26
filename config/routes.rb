@@ -3,11 +3,13 @@ IntranetSXB::Application.routes.draw do
 
   resources :ragots
 
-  resources :albums do 
-    resources :photos
-  end
-  match "/gallery" => "gallery#index", :as => "gallery"
-
+  # /gallery
+  namespace "gallery" do 
+    match "/" => "gallery#index"
+    resources :albums, except: :index do 
+      resources :photos
+    end
+  end 
   # /courses => courses_promos_path 
   namespace :courses do
     # /courses/:promo => courses_promos_matters_path
