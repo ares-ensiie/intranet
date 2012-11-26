@@ -46,4 +46,5 @@ class User
 
   has_many :ragots, class_name: "Ragot"
   has_many :albums, class_name: "Album"
+  has_many :documents, class_name: "Document", inverse_of: :author
 end

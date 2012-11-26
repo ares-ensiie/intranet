@@ -4,6 +4,18 @@ IntranetSXB::Application.routes.draw do
   resources :ragots do  end
   resources :album do  end
 
+  # /courses => courses_promos_path 
+  namespace :courses do
+    # /courses/:promo => courses_promos_matters_path
+    resources :promos, :only => :index, :path => "", :on => :collection do
+      # /courses/:promo/:matters => courses_promo_matter_documents
+      resources :matters, :only => :index, :path => "" do 
+        # /courses/:promo/:matters/:doc_id => courses_promo_matter_documents(d)
+        resources :documents, :path => ""
+      end
+    end
+  end
+
   match "/gallery" => "gallery#index"
 
 
