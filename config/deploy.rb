@@ -5,7 +5,7 @@ set :repository,  "ssh://git@ares-ensiie.eu:2222/ensiie_intranet.git"
 set :scm, :git
 set :user, "intranet"
 set :password, "vohitjocji"
-set :branch, "master"
+set :branch, "deployment"
 set :use_sudo, false
 set :deploy_to, "/home/intranet/"
 
