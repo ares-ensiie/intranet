@@ -5,12 +5,12 @@ set :repository,  "ssh://git@ares-ensiie.eu:2222/ensiie_intranet.git"
 set :scm, :git
 set :user, "intranet"
 set :password, "vohitjocji"
-set :branch, "deployment"
+set :branch, "master"
 set :use_sudo, false
 set :deploy_to, "/home/intranet/"
 
 set :default_environment, {
-    'PATH' => "/home/intranet/.rbenv/shims:$PATH"
+    'PATH' => "$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 }
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
@@ -30,10 +30,15 @@ server "ares-ensiie.eu:2201", :app, :web, :db, :primary => true
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+namespace :deploy do
+   task :start do 
+     run "rails s --pid=server.pid -d --port 8081"
+   end
+   task :stop do
+     run "kill -9 `cat server.pid`"
+   end
+   task :restart, :roles => :app, :except => { :no_release => true } do
+     run "kill -9 `cat current/tmp/pids/server.pid`"
+     run "cd current ; rails s -d --port=8081"
+   end
+ end
