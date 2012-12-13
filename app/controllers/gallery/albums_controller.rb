@@ -42,7 +42,7 @@ module Gallery
       if(@album.errors.empty?) then
         respond_with(@album)
       else
-        render edit_album_path(@album)
+        render edit_gallery_album_path(@album)
       end
 
     end 
