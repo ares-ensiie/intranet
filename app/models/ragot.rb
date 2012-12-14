@@ -1,16 +1,16 @@
 class Ragot
   include Mongoid::Document
+  include Mongoid::Timestamps
 
-  attr_accessible :content, :date, :score
+  attr_accessible :content, :date, :score, :author
 
-  field "content", :type => String, :default => ""
-  field "date", :type => DateTime, :default => nil
-  field "score", :type => Integer, :default => 0
-  
+  field :content
+  field :date, type: DateTime
+  field :score, type: Integer, default: 0
+
   belongs_to :author, class_name: "User"
 
-  validates :content, :presence => true
-  validates :date, :presence => true 
-  validates :author, :presence => true 
-
+  validates :content, presence: true
+  validates :date, presence: true
+  validates :author, presence: true
 end
