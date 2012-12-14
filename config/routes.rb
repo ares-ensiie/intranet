@@ -29,5 +29,13 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
+  namespace :admin do
+    root to: 'users#index'
+    resources :users
+    resources :promotions do
+      resources :users, path: 'students', only: :index
+    end
+  end
+
   root to: 'intranet#index'
 end

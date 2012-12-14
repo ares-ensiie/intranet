@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @user], html: { class: 'form-horizontal' } do |f|
+  = f.input :username
+  = f.input :email
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :promotion_id, collection: Promotion.all
+  .form-actions
+    = f.submit class: 'btn btn-primary'

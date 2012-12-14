@@ -1,0 +1,15 @@
+%h1
+  = "#{@user.name}"
+
+= render 'form'
+
+%h2 Supprimer l'utilisateur
+
+.alert.alert-error
+  = text_field_tag 'username', '', placeholder: @user.username
+  = button_to "Supprimer l'utilisateur", [:admin, @user], method: :delete,
+    class: 'btn btn-danger', id: 'delete-user-button', disabled: true
+
+:coffeescript
+  $('input[name="username"]').keyup (e) ->
+    $('#delete-user-button').attr('disabled', $(this).val() != "#{@user.username}")

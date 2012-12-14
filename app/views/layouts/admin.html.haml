@@ -1,0 +1,32 @@
+!!!
+%html
+  %title
+  = stylesheet_link_tag 'admin', media: 'all'
+  = javascript_include_tag 'admin'
+  = csrf_meta_tags
+%body
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        = link_to 'Administration Ares', admin_root_path, class: 'brand'
+  .container
+    .row
+      .span3
+        .well.sidebar-nav
+          %ul.nav.nav-list
+            %li.nav-header Users
+            %li
+              = link_to 'Tout les utilisateurs', admin_users_path
+            %li
+              = link_to new_admin_user_path do
+                %i.icon-plus-sign
+                Nouvel utilisateur
+            %li.nav-header Promotions
+            - Promotion.all.each do |promotion|
+              %li
+                = link_to promotion.name, admin_promotion_users_path(promotion)
+            %li
+              = link_to new_admin_promotion_path do
+                %i.icon-plus-sign
+                Nouvelle promotion
+      .span9= yield
