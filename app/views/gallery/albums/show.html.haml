@@ -2,7 +2,7 @@
   .row
     .page-header
       %h1
-        = link_to "←", gallery_path
+        = link_to "←", gallery_root_path
         = @album.name
         &nbsp; 
         - if @album.author.eql?(current_user)
