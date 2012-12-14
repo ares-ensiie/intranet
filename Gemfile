@@ -26,6 +26,7 @@ gem "jquery-fileupload-rails"
 
 gem 'pry'
 gem 'haml'
+gem 'simple_form'
 gem 'grape'
 gem 'devise'
 
