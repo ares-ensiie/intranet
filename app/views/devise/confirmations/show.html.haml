@@ -1,0 +1,10 @@
+%h1= "Activation du compte de #{resource.name}"
+
+= simple_form_for resource, as: resource_name, url: update_user_confirmation_path, html: { method: :put, class: 'form-horizontal' } do |f|
+  = devise_error_messages!
+  - if @requires_password
+    = f.input :password
+    = f.input :password_confirmation
+  = hidden_field_tag :confirmation_token, @confirmation_token
+  .form-actions
+    = f.submit "Activer", class: 'btn btn-primary'
