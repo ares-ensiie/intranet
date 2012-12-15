@@ -20,6 +20,8 @@ IntranetSXB::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.assets.initialize_on_precompile = true
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
@@ -44,6 +46,7 @@ IntranetSXB::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( admin.css admin.js developers.css developers.js )
