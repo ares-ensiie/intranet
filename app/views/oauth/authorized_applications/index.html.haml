@@ -1,0 +1,16 @@
+- if @applications.any?
+  %table.table
+    %thead
+      %tr
+        %th Nom de l'application
+        %th Ajouté à
+        %th
+    %tbody
+      - @applications.each do |application|
+        %tr
+          %td= application.name
+          %td= application.created_at
+          %td= link_to 'Révoquer', oauth_authorized_application_path(application), :class => 'btn btn-danger btn-small', confirm: 'sur ?', method: :delete
+- else
+  %p
+    %i Vous n'avez pas encore authorisé d'applications.

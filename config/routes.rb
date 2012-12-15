@@ -73,5 +73,10 @@ IntranetSXB::Application.routes.draw do
     put :update_password
   end
 
+  use_doorkeeper do
+    skip_controllers :applications
+    controllers authorized_applications: 'oauth/authorized_applications'
+  end
+
   root to: 'intranet#index'
 end
