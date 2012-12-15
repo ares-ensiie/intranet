@@ -1,5 +1,6 @@
 subdomains = {
   api: 'api',
+  admin: 'admin',
   developers: 'developers'
 }
 subdomains = Hash[subdomains.map{|k, v| [k, "#{v}.staging"]}] if Rails.env.staging?
@@ -36,11 +37,13 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  namespace :admin do
-    root to: 'users#index'
-    resources :users
-    resources :promotions do
-      resources :users, path: 'students', only: :index
+  constraints subdomain: subdomains[:admin] do
+    scope module: :admin, as: :admin do
+      root to: 'users#index'
+      resources :users
+      resources :promotions do
+        resources :users, path: 'students', only: :index
+      end
     end
   end
 
