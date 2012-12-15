@@ -51,3 +51,7 @@ gem 'rabl'
 group :development do
   gem 'sextant'
 end
+
+group :production, :staging do
+  gem 'unicorn'
+end
