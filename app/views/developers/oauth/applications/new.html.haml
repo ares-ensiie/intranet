@@ -1,0 +1,7 @@
+%h1 Nouvelle application
+
+= simple_form_for [:oauth, @application], html: { class: 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :redirect_uri
+  .form-actions
+    = f.submit class: 'btn btn-primary'

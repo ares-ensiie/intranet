@@ -37,18 +37,25 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  scope subdomain: :developers do
+  constraints subdomain: 'developers' do
+    scope module: :developers, as: :developers do
+      root to: 'developers#homepage'
+    end
     use_doorkeeper do
-      controllers applications: 'oauth/applications'
+      skip_controllers :authorizations, :tokens, :authorized_applications
+      controllers applications: 'developers/oauth/applications'
     end
   end
 
-  scope module: :api, subdomain: 'api' do
-    scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
-      resources :users, only: :show do
-        get :search
+  constraints subdomain: 'api' do
+    root to: redirect(subdomain: 'developers')
+    scope module: :api do
+      scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
+        resources :users, only: :show do
+          get :search
+        end
+        resources :promotions, only: [:index, :show]
       end
-      resources :promotions, only: [:index, :show]
     end
   end
 

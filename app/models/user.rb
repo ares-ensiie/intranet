@@ -15,7 +15,7 @@ class User
   has_many :ragots, class_name: "Ragot", inverse_of: :author
   has_many :albums, class_name: "Album", inverse_of: :author
   has_many :documents, class_name: "Document", inverse_of: :author
-  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
+  has_many :oauth_applications, class_name: '::Oauth::Application', as: :owner
 
   field :username
   field :email

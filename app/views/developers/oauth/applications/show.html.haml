@@ -1,0 +1,17 @@
+%h1= @application.name
+
+%h2 Client id
+%pre= @application.uid
+
+%h2 Client secret
+%pre= @application.secret
+
+%h2 Supprimer l'application
+.alert.alert-error
+  = text_field_tag 'name', '', placeholder: @application.name
+  = button_to "Supprimer l'application", [:oauth, @application], method: :delete,
+    class: 'btn btn-danger', id: 'delete-application-button', disabled: true
+
+:coffeescript
+  $('input[name="name"]').keyup (e) ->
+    $('#delete-application-button').attr('disabled', $(this).val() != "#{@application.name}")

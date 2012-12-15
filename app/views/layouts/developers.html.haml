@@ -1,0 +1,26 @@
+!!!
+%html
+  %title
+  = stylesheet_link_tag 'developers', media: 'all'
+  = javascript_include_tag 'developers'
+  = csrf_meta_tags
+%body
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        = link_to 'Ares Developers', developers_root_url, class: 'brand'
+        %ul.nav
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle(data-toggle="dropdown")
+                Applications
+                %b.caret
+              %ul.dropdown-menu(role="menu")
+                - current_user.oauth_applications.each do |application|
+                  %li= link_to application.name, oauth_application_path(application)
+                %li.divider
+                %li
+                  = link_to new_oauth_application_path do
+                    %i.icon-plus
+                    Nouvelle application
+  .container= yield
