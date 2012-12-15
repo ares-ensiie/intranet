@@ -9,6 +9,7 @@ IntranetSXB::Application.routes.draw do
 
   resources :ragots
 
+
   # /gallery
   namespace :gallery do
     root to: 'gallery#index'
@@ -57,6 +58,10 @@ IntranetSXB::Application.routes.draw do
         resources :promotions, only: [:index, :show]
       end
     end
+  end
+
+  resource :account, only: [:edit, :update] do
+    put :update_password
   end
 
   root to: 'intranet#index'

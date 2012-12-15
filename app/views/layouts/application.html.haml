@@ -1,13 +1,30 @@
-!!! 5
+!!!
 %head
   %title IntranetSXB
   = stylesheet_link_tag    "application", :media => "all"
   = javascript_include_tag "application"
   = csrf_meta_tags
 %body
-  %header.navbar.navbar-inverse
-    %nav.navbar-inner
+  .navbar.navbar-fixed-top
+    .navbar-inner
       .container
-        = render 'layouts/navigation'
-  = yield
-  %footer
+        %ul.nav
+          %li
+            = link_to "Acceuil", root_path
+          %li
+            = link_to "Galerie", gallery_root_path
+          %li
+            = link_to "Cours", courses_promos_path
+        %ul.nav.pull-right
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle(data-toggle="dropdown")
+                = current_user.name
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Mon compte', edit_account_path
+                %li.divider
+                %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'Connexion', new_user_session_path
+  .container= yield

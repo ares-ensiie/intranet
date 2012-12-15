@@ -1,0 +1,18 @@
+%h1 Mon compte
+
+%h2 Informations personnelles
+= simple_form_for @user, url: account_path, html: { class: 'form-horizontal' } do |f|
+  = f.input :username, disabled: true, input_html: { class: 'span9' }
+  = f.input :first_name, disabled: true, input_html: { class: 'span9' }
+  = f.input :last_name, disabled: true, input_html: { class: 'span9' }
+  = f.input :email, disabled: true, input_html: { class: 'span9' }
+  .form-actions
+    = f.submit class: 'btn btn-primary'
+
+%h2 Changer de mot de passe
+= simple_form_for @user, url: update_password_account_path, html: { class: 'form-horizontal' } do |f|
+  = f.input :current_password, input_html: { class: 'span9' }
+  = f.input :password, input_html: { class: 'span9' }
+  = f.input :password_confirmation, input_html: { class: 'span9' }
+  .form-actions
+    = f.submit 'Mettre à jour le mot de passe', class: 'btn btn-primary'
