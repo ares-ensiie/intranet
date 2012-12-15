@@ -6,7 +6,7 @@ users << (promotion_2010.students.create! username: "user1", email: "user1@examp
           confirmed_at: DateTime.now, confirmation_token: 'Grandfathered Account',
           confirmation_sent_at: DateTime.now)
 users << (promotion_2010.students.create! username: "user2", email: "user2@example.com", password: "tototo",
-          first_name: 'Utilisateur', last_name: 'Premier',
+          first_name: 'Utilisateur', last_name: 'Second',
           confirmed_at: DateTime.now, confirmation_token: 'Grandfathered Account',
           confirmation_sent_at: DateTime.now)
 
