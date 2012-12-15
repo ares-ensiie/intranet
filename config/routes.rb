@@ -1,3 +1,9 @@
+subdomains = {
+  api: 'api',
+  developers: 'developers'
+}
+subdomains = Hash[subdomains.map{|k, v| [k, "#{v}.staging"]}] if Rails.env.staging?
+
 IntranetSXB::Application.routes.draw do
 
   as :user do
@@ -38,7 +44,7 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  constraints subdomain: 'developers' do
+  constraints subdomain: subdomains[:developers] do
     scope module: :developers, as: :developers do
       root to: 'developers#homepage'
     end
@@ -48,8 +54,8 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  constraints subdomain: 'api' do
-    root to: redirect(subdomain: 'developers')
+  constraints subdomain: subdomains[:api] do
+    root to: redirect(subdomain: subdomains[:developers])
     scope module: :api do
       scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
         resources :users, only: :show do
