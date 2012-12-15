@@ -46,3 +46,7 @@ gem 'capistrano'
 # gem 'rails-api'
 gem 'doorkeeper'
 gem 'rabl'
+
+group :development do
+  gem 'sextant'
+end
