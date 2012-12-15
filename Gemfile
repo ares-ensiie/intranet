@@ -43,7 +43,6 @@ gem 'mongoid_slug'
 gem 'capistrano'
 
 # API
-# gem 'rails-api'
 gem 'doorkeeper'
 gem 'rabl'
 
