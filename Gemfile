@@ -25,29 +25,24 @@ gem 'jquery-rails'
 gem "jquery-fileupload-rails"
 
 gem 'pry'
+gem 'pry-remote'
 gem 'haml'
 gem 'coffee-filter'
 gem 'simple_form'
 gem 'grape'
 gem 'devise'
-
+gem 'cancan'
 
 gem 'omniauth-ldap', :git => 'https://github.com/ares-ensiie/omniauth-ldap.git'
 gem 'mongoid'
 gem 'mongoid-paperclip'
-gem 'doorkeeper'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'mongoid_slug'
 
 # Deploy with Capistrano
 gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# API
+# gem 'rails-api'
+gem 'doorkeeper'
+gem 'rabl'

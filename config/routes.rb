@@ -37,5 +37,20 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
+  scope subdomain: :developers do
+    use_doorkeeper do
+      controllers applications: 'oauth/applications'
+    end
+  end
+
+  scope module: :api, subdomain: 'api' do
+    scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
+      resources :users, only: :show do
+        get :search
+      end
+      resources :promotions, only: [:index, :show]
+    end
+  end
+
   root to: 'intranet#index'
 end
