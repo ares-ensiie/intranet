@@ -3,6 +3,7 @@ class Api::V1::PromotionsController < Api::V1::ApiV1Controller
   load_and_authorize_resource
 
   def index
+    @promotions = Promotion.all
   end
 
   def show
