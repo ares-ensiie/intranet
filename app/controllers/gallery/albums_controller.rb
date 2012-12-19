@@ -29,7 +29,13 @@ module Gallery
     end 
 
     def update 
+
       @album = Album.find(params[:id])
+
+      params["imgs-to-delete"].map do |i,v|
+        @album.photos.delete(@album.photos.find(v))
+      end
+
       new_date = DateTime.new(
         params[:album]["date(1i)"].to_i,
         params[:album]["date(2i)"].to_i,
@@ -40,7 +46,7 @@ module Gallery
       params[:album].delete("date(1i)")
       @album.update_attributes(params[:album], :date => new_date)
       if(@album.errors.empty?) then
-        respond_with(@album)
+        redirect_to(gallery_album_path(@album))
       else
         render edit_gallery_album_path(@album)
       end

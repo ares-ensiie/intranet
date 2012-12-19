@@ -13,4 +13,15 @@
   = f.label :date, "Date"
   = f.date_select :date, :order => [:day, :month, :year]
   %br
-  = f.submit
+  - if @album.photos.any?
+    %h2 Gestion des photos
+    #edit-thumbs
+      - @album.photos.each do |p|
+        %span.edit-img
+          = image_tag p.photo.url(:mini), alt: p.desc, class: "img-rounded edit-thumb"
+          %span
+  %br
+  %button.btn.btn-primary{:type => "submit"}
+    %i.icon-ok.icon-white
+    Mettre à jour
+

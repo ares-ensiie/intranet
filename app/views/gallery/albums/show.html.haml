@@ -8,8 +8,11 @@
         - if @album.author.eql?(current_user)
           = link_to "Éditer", edit_gallery_album_path(@album)
 
-    %h2 Description
-    %p.album_desc=@album.desc
+    - if !@album.desc.empty?
+      .span9
+        %h2 Description
+        %p.album_desc=@album.desc
+  .row
     - if !@album.photos.empty?
       #gallery{ "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
         - @album.photos.each do |p|

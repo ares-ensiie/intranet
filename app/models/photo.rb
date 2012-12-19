@@ -4,7 +4,8 @@ class Photo
 
   attr_accessible :photo 
   has_mongoid_attached_file :photo, 
-    :styles => { :thumb => Rails.configuration.thumb_height.to_s + "x" + Rails.configuration.thumb_height.to_s + ">" },
+    :styles => { :thumb => Rails.configuration.thumb_height.to_s + "x" + Rails.configuration.thumb_height.to_s + ">" ,
+                 :mini => "50x50"},
     :path => ":rails_root/public/photos/:style/:id.:extension",
     :url => "/photos/:style/:id.:extension"
 

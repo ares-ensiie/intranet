@@ -7,6 +7,10 @@
 #= require jquery-fileupload
 #
 
+
+basename = (path) ->
+  path.replace( /.*\//, "").replace( /\..*/, "")
+
 $ ->
   $("#album_fileinput").fileupload {
     dataType: 'json',
@@ -15,5 +19,15 @@ $ ->
         $('<p/>').text(file.name).appendTo document.body
   }
 
+  $("span.edit-img :last-child").bind "click", (event) ->
+    $(this).toggleClass "edit-thumb-mask"
 
+  $("form").bind "submit", (event) ->
+    form = $(this)
+    imgs = $("span.edit-img :first-child")
+    i = 0
+    $("span.edit-img :last-child").each (index) ->
+      if $(this).hasClass "edit-thumb-mask"
+         form.append "<input type=\"hidden\" name=\"imgs-to-delete["+i+"]\" value=\"" + basename(imgs[index].getAttribute("src"))+"\"/>"
+         i++
 
