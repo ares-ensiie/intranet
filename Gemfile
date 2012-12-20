@@ -40,6 +40,8 @@ gem 'mongoid'
 gem 'mongoid-paperclip'
 
 gem 'mongoid_slug'
+gem 'tire'
+gem 'kaminari'
 
 # Deploy with Capistrano
 gem 'capistrano'

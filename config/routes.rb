@@ -62,7 +62,7 @@ IntranetSXB::Application.routes.draw do
     scope module: :api do
       scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
         resources :users, only: :show do
-          get :search
+          get :search, on: :collection
         end
         resources :promotions, only: [:index, :show]
       end

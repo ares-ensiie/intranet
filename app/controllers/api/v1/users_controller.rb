@@ -4,4 +4,8 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
 
   def show
   end
+
+  def search
+    @users = User.search params if params[:q].present?
+  end
 end

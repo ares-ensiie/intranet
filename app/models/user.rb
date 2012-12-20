@@ -2,6 +2,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable,
     :confirmable
@@ -50,11 +52,34 @@ class User
   validates :last_name, presence: true
   validates :promotion, presence: true
 
+
+  mapping do
+    indexes :id
+    indexes :username, analyzer: 'keyword'
+    indexes :first_name
+    indexes :last_name
+    indexes :name
+  end
+
+  def to_indexed_json
+    Rabl::Renderer.json(self, 'api/v1/users/user', view_path: 'app/views')
+  end
+
+  def self.search(params)
+    tire.search load: true do
+      query { string params[:q] } if params[:q].present?
+    end
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
 
   alias_method :is_admin?, :is_admin
+
+  def self.paginate(options = {})
+    page(options[:page]).per(options[:per_page])
+  end
 
   def attempt_set_password(params)
     p = {}
