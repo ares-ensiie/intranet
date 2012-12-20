@@ -9,7 +9,7 @@ class User
   attr_accessible :username, :email,
     :first_name, :last_name,
     :password, :password_confirmation, :remember_me,
-    :promotion_id, :confirmed_at
+    :confirmed_at, :promotion
 
   belongs_to :promotion, inverse_of: :students
   has_many :ragots, class_name: "Ragot", inverse_of: :author
@@ -48,7 +48,7 @@ class User
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :promotion_id, presence: true
+  validates :promotion, presence: true
 
   def name
     "#{first_name} #{last_name}"
