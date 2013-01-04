@@ -6,14 +6,22 @@
         - @album.errors.map do |k,v|
           %li
             = k.to_s.capitalize + " : " + v.to_s
-  = f.label :name, "Nom"
-  = f.text_field :name, class: "textfield"
-  = f.label :desc, "Description"
-  = f.text_area :desc, rows: 4
-  = f.label :date, "Date"
-  = f.date_select :date, :order => [:day, :month, :year]
-  %br
-  - if @album.photos.any?
+  %fieldset
+    .span3
+      = f.label :name, "Nom"
+      = f.text_field :name, class: "textfield"
+    .span3
+      = f.label :date, "Date"
+      = f.date_select :date, :order => [:day, :month, :year]
+    .span4
+      = f.label :desc, "Description"
+      = f.text_area :desc, rows: 4
+  .row
+    .span2
+      = f.submit class: "btn btn-success"
+- if @current_action.eql? "edit"
+  .row
+    %br
     %h2 Gestion des photos
     = render 'gallery/albums/fileupload'
 

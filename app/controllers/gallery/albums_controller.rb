@@ -3,39 +3,7 @@ module Gallery
     before_filter :authenticate_user!
     respond_to :html, :json
 
-    def index 
-      redirect_to "/gallery"
-    end
-
-    def show
-      @album = Album.find(params[:id])
-    end
-
-    def new
-      @album = Album.new
-    end
-
-    def create 
-      @album = current_user.albums.create(params[:album], :author => current_user)
-      if(@album.errors.empty?) then 
-        redirect_to edit_album_path(@album)
-      else 
-        render "albums/new"
-      end
-    end
-
-    def edit 
-      @album = Album.find(params[:id])
-    end 
-
-    def update 
-
-      @album = Album.find(params[:id])
-
-      params["imgs-to-delete"].map do |i,v|
-        @album.photos.delete(@album.photos.find(v))
-      end
-
+    def date_from_params(params)
       new_date = DateTime.new(
         params[:album]["date(1i)"].to_i,
         params[:album]["date(2i)"].to_i,
@@ -44,7 +12,42 @@ module Gallery
       params[:album].delete("date(3i)")
       params[:album].delete("date(2i)")
       params[:album].delete("date(1i)")
-      @album.update_attributes(params[:album], :date => new_date)
+      return new_date
+    end
+
+    def ping 
+      respond_with ""
+    end
+
+    def show
+      @album = Album.find(params[:id])
+    end
+
+    def new
+      @album = Album.new
+      @photo = @album.photos.new
+      @current_action = "new"
+    end
+
+    def create 
+      @album = current_user.albums.create( params[:album] )
+      if(@album.errors.empty?) then 
+        redirect_to edit_gallery_album_path(@album)
+      else 
+        render new_gallery_album_path
+      end
+    end
+
+    def edit 
+      @album = Album.find(params[:id])
+      @photo = @album.photos.new 
+      @current_action = "edit"
+    end 
+
+    def update 
+      @album = Album.find(params[:id])
+      @album.update_attributes( params[:album] )
+
       if(@album.errors.empty?) then
         redirect_to(gallery_album_path(@album))
       else
