@@ -154,6 +154,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
+    placeholder (0.0.6)
     polyglot (0.3.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -256,6 +257,7 @@ DEPENDENCIES
   mongoid-paperclip
   mongoid_slug
   omniauth-ldap!
+  placeholder
   pry
   pry-remote
   rabl
