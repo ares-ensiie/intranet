@@ -1,9 +1,7 @@
-module Gallery 
-  class GalleryController < ApplicationController
-    before_filter :authenticate_user!
+class Gallery::GalleryController < ApplicationController
+  before_filter :authenticate_user!
 
-    def index 
-      @albums = Album.order_by name: :asc
-    end
+  def index 
+    @albums = Album.order_by name: :asc
   end
 end
