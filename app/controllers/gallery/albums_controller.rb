@@ -2,22 +2,6 @@ class Gallery::AlbumsController < ApplicationController
   before_filter :authenticate_user!
   respond_to :html, :json
 
-  def date_from_params(params)
-    new_date = DateTime.new(
-      params[:album]["date(1i)"].to_i,
-      params[:album]["date(2i)"].to_i,
-      params[:album]["date(3i)"].to_i
-    )
-    params[:album].delete("date(3i)")
-    params[:album].delete("date(2i)")
-    params[:album].delete("date(1i)")
-    return new_date
-  end
-
-  def ping 
-    respond_with ""
-  end
-
   def show
     @album = Album.find(params[:id])
   end
