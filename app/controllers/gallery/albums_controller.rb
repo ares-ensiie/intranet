@@ -15,9 +15,9 @@ class Gallery::AlbumsController < ApplicationController
   def create 
     @album = current_user.albums.create( params[:album] )
     if(@album.errors.empty?) then 
-      redirect_to edit_gallery_album_path(@album)
+      respond_with @album, location: edit_gallery_album_path(@album)
     else 
-      render new_gallery_album_path
+      respond_with @album, location: new_gallery_album_path(@album)
     end
   end
 
@@ -32,10 +32,9 @@ class Gallery::AlbumsController < ApplicationController
     @album.update_attributes( params[:album] )
 
     if(@album.errors.empty?) then
-      redirect_to(gallery_album_path(@album))
+      respond_with @album, location: gallery_album_path(@album)
     else
-      render edit_gallery_album_path(@album)
+      respond_with @album, location: edit_gallery_album_path(@album)
     end
-
   end 
 end
