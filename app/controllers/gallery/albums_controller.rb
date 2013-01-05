@@ -31,10 +31,6 @@ class Gallery::AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @album.update_attributes( params[:album] )
 
-    if(@album.errors.empty?) then
-      respond_with @album, location: gallery_album_path(@album)
-    else
-      respond_with @album, location: edit_gallery_album_path(@album)
-    end
+    respond_with :gallery, @album
   end 
 end
