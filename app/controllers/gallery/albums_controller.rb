@@ -26,16 +26,18 @@ class Gallery::AlbumsController < ApplicationController
     end
   end
 
-  def edit 
-    @album = Album.find(params[:id])
+  def edit
     @photo = @album.photos.new 
     @current_action = "edit"
   end 
 
   def update 
-    @album = Album.find(params[:id])
-    @album.update_attributes( params[:album] )
-
-    respond_with :gallery, @album
+    @album.update_attributes(params[:gallery_album])
+    if current_user.is_admin?  \
+      and params[:gallery_album].has_key? :published then
+      @album.published = params[:gallery_album][:published]
+      @album.save
+    end
+    respond_with @album
   end 
 end

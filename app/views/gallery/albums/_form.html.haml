@@ -19,6 +19,9 @@
   .row
     .span2
       = f.submit class: "btn btn-success"
+    .span2
+      - if current_user.is_admin?
+        = f.label :published, f.check_box(:published) + " Publié ?", class: "checkbox text-error"
 - if @current_action.eql? "edit"
   .row
     %br

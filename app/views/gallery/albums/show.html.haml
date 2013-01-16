@@ -5,7 +5,7 @@
         = link_to "←", gallery_root_path
         = @album.name
         &nbsp; 
-        - if @album.author.eql?(current_user)
+        - if @album.author.eql?(current_user) or current_user.is_admin?
           = link_to "Éditer", edit_gallery_album_path(@album)
 
     - if !@album.desc.empty?
