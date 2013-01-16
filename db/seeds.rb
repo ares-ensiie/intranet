@@ -1,5 +1,10 @@
 promotion_2010 = Promotion.create! name: '2010'
 
+promotion_2010.students.create! username: "admin", email: "admin@example.com", password: "adminadmin",
+          first_name: 'Admin', last_name: 'Istrateur',
+          confirmed_at: DateTime.now, confirmation_token: 'Grandfathered Account',
+          confirmation_sent_at: DateTime.now
+
 users = []
 users << (promotion_2010.students.create! username: "user1", email: "user1@example.com", password: "tototo",
           first_name: 'Utilisateur', last_name: 'Premier',
