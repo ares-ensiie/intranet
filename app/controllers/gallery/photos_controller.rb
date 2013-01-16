@@ -2,16 +2,16 @@ class Gallery::PhotosController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @imgs = Album.find(params[:album_id]).photos
+    @imgs = Gallery::Album.find(params[:album_id]).photos
     render json: @imgs.collect { |p| p.to_jq_upload }.to_json
   end
 
   def destroy 
-    Album.find(params[:album_id]).photos.find(params[:id]).destroy
+    Gallery::Album.find(params[:album_id]).photos.find(params[:id]).destroy
   end
 
   def create
-    @picture = Album.find(params[:album_id]).photos.new(params[:photo])
+    @picture = Gallery::Album.find(params[:album_id]).photos.new(params[:photo])
     if @picture.save
       respond_to do |format|
         format.json {

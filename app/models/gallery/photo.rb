@@ -1,4 +1,4 @@
-class Photo
+class Gallery::Photo
   include Mongoid::Document
   include Mongoid::Paperclip
   include Rails.application.routes.url_helpers
@@ -19,7 +19,7 @@ class Photo
   field :name, :type => String, :default => ""
   field :desc, :type => String, :default => ""
 
-  belongs_to :album, :class_name => "Album"
+  belongs_to :album, :class_name => "Gallery::Album"
 
   def to_jq_upload
   {

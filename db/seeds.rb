@@ -18,7 +18,7 @@ users.each do |u|
   Ragot.create! author: u, date: DateTime.now, content: "Ragot3 de " + u.username
 end
 
-a = Album.create! name: "Album1", author: users[0]
+a = Gallery::Album.create! name: "Album1", author: users[0]
 a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "284f48e7356cfcb85d3c0f21647adfef433fd298.jpg")
 a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "3f0692cae65e30dbcb619e5338f2d1ea32203e46.jpg")
 a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "6392210b1424027836509d6c595f1e5e716dabd6.jpg")

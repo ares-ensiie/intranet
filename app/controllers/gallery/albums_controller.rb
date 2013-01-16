@@ -1,5 +1,6 @@
 class Gallery::AlbumsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource class: Gallery::Album
   respond_to :html, :json
 
   def show
