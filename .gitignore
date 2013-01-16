@@ -16,4 +16,5 @@
 
 .bundle 
 
-
+# Ignore public files
+/public/*
