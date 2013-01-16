@@ -4,17 +4,21 @@ class Gallery::AlbumsController < ApplicationController
   respond_to :html, :json
 
   def show
-    @album = Album.find(params[:id])
+  end 
+
+  def destroy
+    @album.destroy
+    respond_with @album, location: gallery_root_path
   end
 
   def new
-    @album = Album.new
     @photo = @album.photos.new
     @current_action = "new"
   end
 
   def create 
-    @album = current_user.albums.create( params[:album] )
+    @album.author = current_user
+    @album.save
     if(@album.errors.empty?) then 
       respond_with @album, location: edit_gallery_album_path(@album)
     else 
