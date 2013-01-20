@@ -1,12 +1,12 @@
 .container
   .page-header 
     %h1
-      =link_to "←", courses_promo_matters_path(@promo)
-      =link_to "Cours", courses_promos_path
+      =link_to "←", courses_year_matters_path(@year)
+      =link_to "Cours", courses_year_index_path
       ="/"
-      =link_to @promo, courses_promo_matters_path(@promo)
+      =link_to @year, courses_year_matters_path(@year)
       ="/"
       =@course_label
   %ul
     - @documents.each do |d|
-      %li=link_to d.name, courses_promo_matter_document_path(d.promo, d.course_label, d)
+      %li=link_to d.name, d.file.url

@@ -28,9 +28,11 @@ a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "d8
 a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "db95eb1a0fa51254ce4650243e89bbe48c8a482c.jpg")
 
 %w(IPI MOM MTG IPF ISI).each do |c|
-  User.first.documents.create! name: "Cours#{c}", course_label: c, type: "Cours", promo: "1A", :release_date => DateTime.now, :file_path => "/documents/a.pdf"
+  m = Courses::Matter.create name: c, year: "1A"
+  m.documents.create! author: User.first, name: "Cours#{c}", matter: m, type: "Cours", release_date: DateTime.now, file: File.open(Rails.root + "./public/documents/a.pdf")
 end
 
 %w(MAD MRO ILSF ILO IMW).each do |c|
-  User.all[1].documents.create! name: "Cours#{c}", course_label: c, type: "Cours", promo: "2A", :release_date => DateTime.now, :file_path => "/documents/a.pdf"
+  m = Courses::Matter.create name: c, year: "2A"
+  m.documents.create! author: User.all[1], name: "Cours#{c}", matter: m, type: "Cours", release_date: DateTime.now, file: File.open(Rails.root + "./public/documents/a.pdf")
 end
