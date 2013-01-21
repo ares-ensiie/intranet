@@ -39,7 +39,7 @@ describe Api::V1 do
       its(:body) { should have_json_path '0/students/0/last_name' }
     end
 
-    describe 'get all promotions' do
+    describe 'get a single promotion' do
       let(:promotion) { FactoryGirl.create :promotion, :with_students }
       let!(:request) { get "#{api_host}/promotions/#{promotion.to_param}?client_id=#{application.uid}&client_secret=#{application.secret}" }
 
