@@ -19,18 +19,3 @@ users.each do |u|
 end
 
 a = Album.create! name: "Album1", author: users[0]
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "284f48e7356cfcb85d3c0f21647adfef433fd298.jpg")
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "3f0692cae65e30dbcb619e5338f2d1ea32203e46.jpg")
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "6392210b1424027836509d6c595f1e5e716dabd6.jpg")
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "73b0ad03f021c25062a0cc6f5203636a7aa5bc10.jpg")
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "ac8c9861c83d5fedf84f934af69d89da154c3d87.jpg")
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "d8516aac4e11e9f9a6cc65c9f6b23d0eac981e17.jpg")
-a.photos.create! photo: File.open(Rails.root + "./public/albums/" + a.name + "db95eb1a0fa51254ce4650243e89bbe48c8a482c.jpg")
-
-%w(IPI MOM MTG IPF ISI).each do |c|
-  User.first.documents.create! name: "Cours#{c}", course_label: c, type: "Cours", promo: "1A", :release_date => DateTime.now, :file_path => "/documents/a.pdf"
-end
-
-%w(MAD MRO ILSF ILO IMW).each do |c|
-  User.all[1].documents.create! name: "Cours#{c}", course_label: c, type: "Cours", promo: "2A", :release_date => DateTime.now, :file_path => "/documents/a.pdf"
-end
