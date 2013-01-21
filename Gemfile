@@ -42,7 +42,6 @@ gem 'mongoid_slug'
 gem 'tire'
 gem 'kaminari'
 
-
 # API
 gem 'doorkeeper'
 gem 'rabl'
