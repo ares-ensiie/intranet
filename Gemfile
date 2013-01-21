@@ -24,7 +24,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem "jquery-fileupload-rails"
+gem 'jquery-fileupload-rails'
 
 gem 'pry'
 gem 'pry-remote'
