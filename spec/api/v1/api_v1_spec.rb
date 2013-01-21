@@ -6,6 +6,7 @@ describe Api::V1 do
   let(:api_host) { 'http://api.ares-ensiie.eu' }
 
   describe 'user resource' do
+    # GET /user/:id
     describe 'get a single user' do
       let(:user) { FactoryGirl.create(:user) }
       let!(:request) { get "#{api_host}/users/#{user.to_param}?client_id=#{application.uid}&client_secret=#{application.secret}" }
@@ -23,6 +24,7 @@ describe Api::V1 do
   end
 
   describe 'promotion resource' do
+    # GET /promotions
     describe 'get all promotions' do
       let(:promotions) { FactoryGirl.build_list :promotion, 10, :with_students }
       let!(:request) { get "#{api_host}/promotions?client_id=#{application.uid}&client_secret=#{application.secret}" }
@@ -39,6 +41,7 @@ describe Api::V1 do
       its(:body) { should have_json_path '0/students/0/last_name' }
     end
 
+    # GET /promotions/:id
     describe 'get a single promotion' do
       let(:promotion) { FactoryGirl.create :promotion, :with_students }
       let!(:request) { get "#{api_host}/promotions/#{promotion.to_param}?client_id=#{application.uid}&client_secret=#{application.secret}" }
