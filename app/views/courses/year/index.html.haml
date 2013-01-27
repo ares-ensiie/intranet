@@ -3,7 +3,19 @@
     %h1
       =link_to "←", root_path
       =link_to "Cours", courses_year_index_path
-    .btn-group.btn-group-vertical
-      =link_to "1A", courses_year_matters_path("1A"), class: "btn btn-large btn-info"
-      =link_to "2A", courses_year_matters_path("2A"), class: "btn btn-large btn-success"
-      =link_to "3A", courses_year_matters_path("3A"), class: "btn btn-large btn-warning"
+
+    -@courses.each_pair do |k,v|
+      %dl.span3
+        %dt
+          %h2
+            = link_to k, courses_year_matters_path(k)
+        %dd
+          %ul
+            - v.each do |matter|
+              %li
+                = link_to matter.name, courses_year_matter_documents_path(k, matter.name)
+                %small (#{matter.documents.count})
+
+          = link_to "+", new_courses_year_matter_path(k), class: "btn btn-small"
+
+            

@@ -9,26 +9,31 @@
       =@matter.name
   .row
     = link_to "Ajouter un document", new_courses_year_matter_document_path(@year, @matter.name), class: "btn btn-info"
+    - if current_user.is_admin?
+      = link_to "Supprimer la matière", courses_year_matter_path(@year, @matter), method: :delete, class: "btn btn-mini btn-danger", confirm: "Cela supprimera tous les documents associés\nÊtes-vous certain ?"
 
   .row
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Nom 
-          %th Propriétaire
-          %th Type
-          %th Date de publication
-          - if current_user.is_admin?
-            %th Action
-      %tbody
-        - @documents.each do |d|
+    - if @documents.empty?
+      %p Il n'y a pas de document pour cette matière
+    - else
+      %table.table.table-striped
+        %thead
           %tr
-            %td
-              = link_to d.name, d.file.url
-            %td=d.author.username
-            %td=d.type
-            %td=d.release_date 
+            %th Nom 
+            %th Propriétaire
+            %th Type
+            %th Date de publication
             - if current_user.is_admin?
+              %th Action
+        %tbody
+          - @documents.each do |d|
+            %tr
               %td
-                =link_to "Supprimer", courses_year_matter_document_path(@year, @matter.name, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
+                = link_to d.name, d.file.url
+              %td=d.author.username
+              %td=d.type
+              %td=d.release_date 
+              - if current_user.is_admin?
+                %td
+                  =link_to "Supprimer", courses_year_matter_document_path(@year, @matter.name, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
 

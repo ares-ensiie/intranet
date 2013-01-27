@@ -27,11 +27,11 @@ IntranetSXB::Application.routes.draw do
 
   # /courses => courses_year_path
   namespace :courses do
-    # /courses/:year => courses_year_matters_path
-    resources :year, only: :index, path: '', on: :collection do
-      # /courses/:year/:matters => courses_year_matter_documents
-      resources :matters, only: :index, path: '' do
-        # /courses/:year/:matters/:doc_id => courses_year_matter_documents(d)
+    # /courses/:year_id => courses_year_matters_path
+    resources :year, only: :index, path: '', on: :collection, constraints: { year_id: /[123]A/ } do
+      # /courses/:year_id/:matter_id => courses_year_matter_documents
+      resources :matters, path: '', constraints: { matter_id: /[A-Z]+\d?/ } do
+        # /courses/:year_id/:matter_id/:doc_id => courses_year_matter_documents(d)
         resources :documents, path: ''
       end
     end

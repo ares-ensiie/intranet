@@ -9,7 +9,6 @@
     - @courses.each do |c|
       %li
         = link_to c.name, courses_year_matter_documents_path(@year, c.name)
-        %small (#{c.documents.count})
 
 
 
