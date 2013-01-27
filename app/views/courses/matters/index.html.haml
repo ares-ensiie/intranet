@@ -7,5 +7,9 @@
       =link_to @year, courses_year_matters_path(@year)
   %ul
     - @courses.each do |c|
-      %li=link_to c.name, courses_year_matter_documents_path(@year, c.name)
+      %li
+        = link_to c.name, courses_year_matter_documents_path(@year, c.name)
+        %small (#{c.documents.count})
+
+
 

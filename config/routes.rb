@@ -25,13 +25,13 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  # /courses => courses_promos_path
+  # /courses => courses_year_path
   namespace :courses do
-    # /courses/:year => courses_promos_matters_path
+    # /courses/:year => courses_year_matters_path
     resources :year, only: :index, path: '', on: :collection do
-      # /courses/:year/:matters => courses_promo_matter_documents
+      # /courses/:year/:matters => courses_year_matter_documents
       resources :matters, only: :index, path: '' do
-        # /courses/:year/:matters/:doc_id => courses_promo_matter_documents(d)
+        # /courses/:year/:matters/:doc_id => courses_year_matter_documents(d)
         resources :documents, path: ''
       end
     end

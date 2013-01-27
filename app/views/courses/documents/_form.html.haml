@@ -1,0 +1,29 @@
+%h2 Ajouter un document
+.row
+  = form_for @document, url: courses_year_matter_documents_path(@year, @matter.name), html: { class: "form-horizontal" } do |f|
+    -if !@document.errors.empty?
+      .text-error
+        Échec de mise en ligne du document :
+        %ul
+          - @document.errors.map do |k,v|
+            %li
+              = k.to_s.capitalize + " : " + v.to_s
+    .control-group
+      = f.label :name, "Nom : ", class: "control-label"
+      .controls 
+        = f.text_field :name, placeholder: "Nom"
+    .control-group
+      = f.label :file, "Fichier : ", class: "control-label"
+      .controls
+        = f.file_field :file
+    .control-group
+      = label_tag nil, "Cours : ", class: "control-label"
+      .controls 
+        = text_field_tag "matter_name", @matter.name, disabled: true
+    .control-group 
+      = label_tag :type, "Type de document : ", class: "control-label"
+      .controls
+        = f.select :type, %w(Cours TD TP Autre)
+    .control-group
+      .controls
+        = f.submit
