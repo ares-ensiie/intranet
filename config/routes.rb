@@ -25,15 +25,14 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  # /courses => courses_year_path
+  # Add a document without taking care of the matter
+  match "/courses/new" => "courses/documents#new", :via => :get, :as => :new_courses_document
+  # /courses => courses_path
   namespace :courses do
-    # /courses/:year_id => courses_year_matters_path
-    resources :year, only: :index, path: '', on: :collection, constraints: { year_id: /[123]A/ } do
-      # /courses/:year_id/:matter_id => courses_year_matter_documents
-      resources :matters, path: '', constraints: { matter_id: /[A-Z]+\d?/ } do
-        # /courses/:year_id/:matter_id/:doc_id => courses_year_matter_documents(d)
-        resources :documents, path: ''
-      end
+    # /courses/:matter_id => courses_matter_documents
+    resources :matters, only: [:show, :destroy, :index] , path: '' do
+      # /courses/:matter_id/:doc_id => courses_matter_documents(d)
+      resources :documents, path: ''
     end
   end
 

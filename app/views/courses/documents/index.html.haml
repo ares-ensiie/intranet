@@ -1,16 +1,13 @@
 .container
   .page-header 
     %h1
-      =link_to "←", courses_year_matters_path(@year)
-      =link_to "Cours", courses_year_index_path
-      ="/"
-      =link_to @year, courses_year_matters_path(@year)
+      =link_to "← Cours", courses_matters_path
       ="/"
       =@matter.name
   .row
-    = link_to "Ajouter un document", new_courses_year_matter_document_path(@year, @matter.name), class: "btn btn-info"
+    = link_to "Ajouter un document", new_courses_matter_document_path(@matter.name), class: "btn btn-info"
     - if current_user.is_admin?
-      = link_to "Supprimer la matière", courses_year_matter_path(@year, @matter), method: :delete, class: "btn btn-mini btn-danger", confirm: "Cela supprimera tous les documents associés\nÊtes-vous certain ?"
+      = link_to "Supprimer la matière", courses_matter_path(@matter), method: :delete, class: "btn btn-mini btn-danger", confirm: "Cela supprimera tous les documents associés\nÊtes-vous certain ?"
 
   .row
     - if @documents.empty?
@@ -35,5 +32,5 @@
               %td=d.release_date 
               - if current_user.is_admin?
                 %td
-                  =link_to "Supprimer", courses_year_matter_document_path(@year, @matter.name, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
+                  =link_to "Supprimer", courses_matter_document_path(@matter.name, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
 
