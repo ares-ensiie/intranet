@@ -3,8 +3,7 @@
   .row
     .page-header
       %h1= "Album : " + @album.name 
-
-    = render 'gallery/albums/form'
-    = render 'gallery/albums/fileupload'
+  .row
+    = render 'form'
 
 = javascript_include_tag "albums"

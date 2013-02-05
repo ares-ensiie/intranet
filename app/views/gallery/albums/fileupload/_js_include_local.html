@@ -8,11 +8,7 @@
         // Enable iframe cross-domain access via redirect option:
         $('#fileupload').fileupload(
                 'option',
-                'redirect',
-                window.location.href.replace(
-                        /\/[^\/]*$/,
-                        '/cors/result.html?%s'
-                )
+                'redirect'
         );
 
         $('#fileupload').fileupload('option', {
@@ -35,19 +31,6 @@
                 }
             ]
         });
-
-        if ($.support.cors) {
-            $.ajax({
-                url:'/albums/new',
-                type:'HEAD'
-            }).fail(function () {
-                        $('<span class="alert alert-error"/>')
-                                .text('Upload server currently unavailable - ' +
-                                new Date())
-                                .appendTo('#fileupload');
-                    });
-        }
-
 
         // Load existing files:
         $('#fileupload').each(function () {

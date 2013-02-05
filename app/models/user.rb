@@ -14,7 +14,7 @@ class User
     :confirmed_at, :promotion
 
   belongs_to :promotion, inverse_of: :students
-  has_many :albums, class_name: "Album", inverse_of: :author
+  has_many :albums, class_name: "Gallery::Album", inverse_of: :author
   has_many :documents, class_name: "Document", inverse_of: :author
   has_many :oauth_applications, class_name: '::Oauth::Application', as: :owner
 

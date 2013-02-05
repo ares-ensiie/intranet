@@ -9,7 +9,36 @@
 .album_desc {
   background-color: #eeeeee;
   border: 1px solid #cccccc;
-  min-height: 100px;
-  margin-left: 30px;
-  margin-right: 30px;
+  min-height: 50px;
+  margin-bottom: 20px;
+}
+
+#gallery a img{
+  padding-bottom:5px;
+}
+
+#edit-thumbs {
+  position:relative;
+}
+
+.edit-thumb {
+  position:absolute;
+}
+
+.edit-thumb-mask {
+  background-image: url(/assets/red_mask.png)
+}
+
+span.edit-img {
+  margin-left:5px;
+  display:inline-block;
+  height:50px;
+  width:50px;
+  span {
+	  position:absolute;
+	  cursor:pointer;
+	  display:inline-block;
+	  height:50px;
+	  width:50px;
+  }
 }

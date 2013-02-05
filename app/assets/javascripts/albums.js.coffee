@@ -7,6 +7,10 @@
 #= require jquery-fileupload
 #
 
+
+basename = (path) ->
+  path.replace( /.*\//, "").replace( /\..*/, "")
+
 $ ->
   $("#album_fileinput").fileupload {
     dataType: 'json',
@@ -14,6 +18,5 @@ $ ->
       $.each data.result, (index, file) =>
         $('<p/>').text(file.name).appendTo document.body
   }
-
 
 

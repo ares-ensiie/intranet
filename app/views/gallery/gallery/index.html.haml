@@ -1,11 +1,42 @@
-.container
-  .page-header
-    %h1 La galerie des iiens
+.page-header
+  %h1 La galerie des iiens
 
-  - if !@albums.empty?
-    %ul.albums 
-      - @albums.each do |a|
-        %li
-          = link_to a.name + " Nombre de photos : " + a.photos.count.to_s , gallery_album_path(a)
+.row
+  %p
+    = link_to "Proposer un album", new_gallery_album_path, class: "btn btn-primary"
 
-  = link_to "Proposer un album", new_gallery_album_path
+  - if @albums_unpublished.any?
+    .row
+      %ul.thumbnails
+        - @albums_unpublished.each do |a|
+          %li.span3
+            .thumbnail
+              - if a.photos and a.photos.count > 0
+                = link_to (image_tag a.photos[0].photo.url(:thumb)), gallery_album_path(a)
+              - else
+                = link_to Placeholder.new(200) , gallery_album_path(a)
+              - if current_user.is_admin? 
+                = link_to "Valider", edit_gallery_album_path(a), class: "btn btn-warning"
+              - if current_user.is_admin? or a.author == current_user 
+                = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
+              %span.label.label-important
+                Attente de validation
+  - if @albums.any?
+    .row
+      %ul.thumbnails
+        - @albums.each do |a|
+          %li.span3
+            .thumbnail
+              - if a.photos and a.photos.count > 0
+                = link_to (image_tag a.photos[0].photo.url(:thumb)), gallery_album_path(a)
+              - else
+                = link_to Placeholder.new(200) , gallery_album_path(a)
+              %h4
+                = a.name
+                - if a.date 
+                  %span.album_date
+                    = a.date.strftime("%F")
+              - if !a.desc.empty?
+                %p=a.desc
+
+
