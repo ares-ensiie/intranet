@@ -4,6 +4,7 @@ class User
   include Mongoid::Slug
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  index_name INDEX_NAME
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable,
     :confirmable
