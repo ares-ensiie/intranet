@@ -51,6 +51,7 @@ group :development do
 end
 
 group :production, :staging do
+  gem 'aws-sdk'
   gem 'unicorn'
 end
 

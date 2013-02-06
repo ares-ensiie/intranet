@@ -9,17 +9,17 @@ class Gallery::Photo
 
   attr_accessible :photo 
   has_mongoid_attached_file :photo, 
-    :styles => { :thumb => Rails.configuration.thumb_height.to_s + "x" + Rails.configuration.thumb_height.to_s + ">" ,
-                 :mini => "50x50"},
-    :path => ":rails_root/public/photos/:style/:id.:extension",
-    :url => "/photos/:style/:id.:extension"
+    styles: { 
+      thumb: Rails.configuration.thumb_height.to_s + "x" + Rails.configuration.thumb_height.to_s + ">" ,
+      mini: "50x50"
+    }
 
-  validates :photo, :attachment_presence => true
+  validates :photo, attachment_presence: true
 
-  field :name, :type => String, :default => ""
-  field :desc, :type => String, :default => ""
+  field :name, type: String, default: ""
+  field :desc, type: String, default: ""
 
-  belongs_to :album, :class_name => "Gallery::Album"
+  belongs_to :album, class_name: "Gallery::Album"
 
   def to_jq_upload
   {
