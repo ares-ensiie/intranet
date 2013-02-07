@@ -1,0 +1,6 @@
+fr:
+  fileupload:
+    add_files: Fichiers
+    start_upload: Uploader
+    cancel_upload: Annuler
+    delete_multi: Suppresions

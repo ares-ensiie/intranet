@@ -25,9 +25,8 @@ end
 
 gem 'jquery-rails'
 gem "jquery-fileupload-rails"
+gem "placeholder"
 
-gem 'pry'
-gem 'pry-remote'
 gem 'haml'
 gem 'coffee-filter'
 gem 'simple_form'
@@ -43,25 +42,26 @@ gem 'mongoid_slug'
 gem 'tire'
 gem 'kaminari'
 
-# Deploy with Capistrano
-gem 'capistrano'
 
 # API
 gem 'doorkeeper'
 gem 'rabl'
 
 group :development do
-  gem 'sextant'
 end
 
 group :production, :staging do
+  gem 'aws-sdk'
   gem 'unicorn'
 end
 
 group :development, :test do
+  gem 'pry'
+  gem 'pry-remote'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'json_spec'
   gem 'rspec-rails'
   gem 'mongoid-rspec'
+  gem 'sextant'
 end

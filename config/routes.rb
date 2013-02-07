@@ -14,9 +14,6 @@ IntranetSXB::Application.routes.draw do
     :confirmations => 'users/confirmations'
   }
 
-  resources :ragots
-
-
   # /gallery
   namespace :gallery do
     root to: 'gallery#index'

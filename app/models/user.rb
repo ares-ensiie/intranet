@@ -4,6 +4,7 @@ class User
   include Mongoid::Slug
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  index_name INDEX_NAME
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable,
     :confirmable
@@ -14,9 +15,10 @@ class User
     :confirmed_at, :promotion
 
   belongs_to :promotion, inverse_of: :students
-  has_many :ragots, class_name: "Ragot", inverse_of: :author
-  has_many :albums, class_name: "Album", inverse_of: :author
+
+  has_many :albums, class_name: "Gallery::Album", inverse_of: :author
   has_many :documents, class_name: "Courses::Document", inverse_of: :author
+
   has_many :oauth_applications, class_name: '::Oauth::Application', as: :owner
 
   field :username

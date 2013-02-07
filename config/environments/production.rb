@@ -49,7 +49,7 @@ IntranetSXB::Application.configure do
   config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( admin.css admin.js developers.css developers.js )
+  config.assets.precompile += %w( admin.css admin.js developers.css developers.js albums.js)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -73,9 +73,18 @@ IntranetSXB::Application.configure do
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'www.ares-ensiie.eu',
+    :domain         => 'iiens.eu',
     :authentication => :plain,
   }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'www.ares-ensiie.eu' }
+  config.action_mailer.default_url_options = { :host => 'iiens.eu' }
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['FOG_DIRECTORY'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end

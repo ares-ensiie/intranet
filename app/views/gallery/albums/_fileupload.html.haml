@@ -1,22 +1,22 @@
-= form_for Photo.new, :url => gallery_album_photos_path(@album), :html => { :multipart => true, :id => "fileupload"  } do |f|
+= form_for @photo, :url => gallery_album_photos_path([@album, @photo]), :html => { :multipart => true, :id => "fileupload"  } do |f|
   .row.fileupload-buttonbar
     .span7
       %span.btn.btn-success.fileinput-button
         %i.icon-plus.icon-white
         %span
           = t('fileupload.add_files')
-        = f.file_field :path, :multiple => true
+        = file_field_tag "photo[photo]", :multiple => true
       %button.btn.btn-primary.start{:type=>"submit"}
         %i.icon-upload.icon-white
         %span
           = t('fileupload.start_upload')
       %button.btn.btn-warning.cancel{:type => "reset"}
         %i.icon-ban-circle.icon-white
-        %span>
+        %span
           = t('fileupload.cancel_upload')
       %button.btn.btn-danger.delete{:type => "button"}
         %i.icon-trash.icon-white
-        %span>
+        %span
           = t('fileupload.delete_multi')
       %input.toggle{:type=>"checkbox"}
     .span5
