@@ -1,0 +1,12 @@
+.page-header
+  %h1
+    = "#{@user.first_name} #{@user.last_name}"
+
+
+%h4
+  Contact :
+%p=@user.email
+
+- if @user.avatar_file_name != nil
+  %p
+    = image_tag @user.avatar.url, class: "img-polaroid"

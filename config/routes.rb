@@ -10,10 +10,12 @@ IntranetSXB::Application.routes.draw do
   as :user do
       match '/user/confirmation' => 'users/confirmations#update', :via => :put, :as => :update_user_confirmation
   end
+  resources :users, only: [:show]
   devise_for :users, controllers: {
     :confirmations => 'users/confirmations'
   }
 
+  resources :promotions, only: [:show, :index]
   # /gallery
   namespace :gallery do
     root to: 'gallery#index'
