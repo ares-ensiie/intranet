@@ -1,8 +1,38 @@
 //= require_self
 //= require_tree ./gallery
-//= require ./ragots
+//= require ./account
 
 @import bootstrap
 
 body
   padding-top: 60px
+
+.menu
+  top: 40px 
+  margin-left: 10px
+  margin-bottom: 35px
+  border-radius: 6px
+  li:first-child
+    a, h5, p
+      border-radius: 6px 6px 0 0
+  li:last-child
+    a, h5, p
+      border-radius: 0 0 6px 6px
+  li
+    line-height: 20px
+    display: list-item
+    text-align: match-parent
+    a, p, h5
+      display: block
+      margin: 0 0 -1px
+      padding: 8px 14px
+      border: 1px solid #c5c5c5
+    a.disable
+      color: #959595
+      background-color: #e5e5e5
+  li.coming
+    span
+      position: relative
+      top: 5px
+      color: red
+      font-size: 10px
