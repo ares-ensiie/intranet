@@ -10,7 +10,8 @@ class Gallery::Photo
   attr_accessible :photo 
   has_mongoid_attached_file :photo, 
     styles: { 
-      thumb: Rails.configuration.thumb_height.to_s + "x" + Rails.configuration.thumb_height.to_s + ">" ,
+      thumb_square: "#{Rails.configuration.thumb_height.to_s}x#{Rails.configuration.thumb_height.to_s}#" ,
+      thumb: "#{Rails.configuration.thumb_height.to_s}x#{Rails.configuration.thumb_height.to_s}>" ,
       mini: "50x50"
     }
 
@@ -25,8 +26,8 @@ class Gallery::Photo
   {
     "name" => photo_file_name,
     "size" => photo_file_size,
-    "url" => photo.url(:thumb),
-    "thumbnail_url" => photo.url(:thumb),
+    "url" => photo.url,
+    "thumbnail_url" => photo.url(:thumb_square),
     "delete_url" => gallery_album_photo_path(album, self),
     "delete_type" => "DELETE"
   }
