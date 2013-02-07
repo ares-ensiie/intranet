@@ -4,7 +4,10 @@ class User
   include Mongoid::Slug
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name INDEX_NAME
+
+  if Rails.env.staging? or Rails.env.production? then
+    index_name INDEX_NAME
+  end
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable,
     :confirmable
