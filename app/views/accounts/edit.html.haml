@@ -1,4 +1,5 @@
-%h1 Mon compte
+.page-header
+  %h1 Mon compte
 
 %h2 Informations personnelles
 = simple_form_for @user, url: account_path, html: { class: 'form-horizontal' } do |f|
@@ -6,6 +7,19 @@
   = f.input :first_name, disabled: true, input_html: { class: 'span9' }
   = f.input :last_name, disabled: true, input_html: { class: 'span9' }
   = f.input :email, disabled: true, input_html: { class: 'span9' }
+  = f.input :avatar, input_html: {class: 'span9' }
+  #avatar
+    - if current_user.avatar_file_name == nil
+      %span.label.label-warning
+        Pas d'avatar !
+    - else
+      %p 
+        Avatar courant :
+        = link_to (image_tag current_user.avatar.url(:mini)), current_user.avatar.url
+      .control-group
+        = label nil, "user_delete_avatar", "Supprimer l'avatar ?", class: "control-label"
+        .controls
+          %input{type: "checkbox", id: "user_delete_avatar", name: "user[delete_avatar]"}
   .form-actions
     = f.submit class: 'btn btn-primary'
 

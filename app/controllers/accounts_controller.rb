@@ -7,6 +7,12 @@ class AccountsController < ApplicationController
   end
 
   def update
+    @user = current_user
+    if @user.avatar_file_name != nil and params[:user].has_key? :delete_avatar and params[:user][:delete_avatar]  then
+      @user.avatar.clear
+    end
+    @user.update_attributes(params[:user])
+    respond_with @user, location: edit_account_path
   end
 
   def update_password

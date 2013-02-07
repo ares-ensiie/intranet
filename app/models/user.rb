@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Mongoid::Paperclip
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
@@ -9,10 +10,17 @@ class User
     index_name INDEX_NAME
   end
 
+  has_mongoid_attached_file :avatar, 
+    styles: { 
+      mini: "50x50#",
+      thumb: "150x150#",
+      original: "500x500>"
+    }
+
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable,
     :confirmable
 
-  attr_accessible :username, :email,
+  attr_accessible :username, :email, :avatar,
     :first_name, :last_name,
     :password, :password_confirmation, :remember_me,
     :confirmed_at, :promotion
