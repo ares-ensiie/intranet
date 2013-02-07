@@ -23,7 +23,7 @@ group :assets do
   gem 'asset_sync'
 end
 
-gem 'jquery-rails'
+gem "jquery-rails"
 gem "jquery-fileupload-rails"
 gem "placeholder"
 
