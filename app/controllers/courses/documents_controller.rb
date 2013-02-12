@@ -1,6 +1,6 @@
 class Courses::DocumentsController < ApplicationController
-  load_and_authorize_resource class: Courses::Document
   before_filter :authenticate_user!
+  load_and_authorize_resource class: Courses::Document
 
   def index
     @matter = Courses::Matter.where(name: params[:matter_id]).first

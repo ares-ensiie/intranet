@@ -1,7 +1,6 @@
 class Courses::MattersController < ApplicationController
-  load_and_authorize_resource class: Courses::Matter
   before_filter :authenticate_user!
-
+  load_and_authorize_resource class: Courses::Matter
 
   def index
     @courses = {}
