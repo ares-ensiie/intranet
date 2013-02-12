@@ -13,9 +13,32 @@ IntranetSXB::Application.routes.draw do
   devise_for :users, controllers: {
     :confirmations => 'users/confirmations'
   }
-  resources :users, only: [:show]
 
+  constraints subdomain: subdomains[:api] do
+    root to: redirect(subdomain: subdomains[:developers])
+    scope module: :api do
+      scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
+        resources :users, only: :show do
+          get :search, on: :collection
+        end
+        resources :promotions, only: [:index, :show]
+      end
+    end
+  end
+
+  constraints subdomain: subdomains[:admin] do
+    scope module: :admin, as: :admin do
+      root to: 'users#index'
+      resources :users
+      resources :promotions do
+        resources :users, path: 'students', only: :index
+      end
+    end
+  end
+
+  resources :users, only: [:show]
   resources :promotions, only: [:show, :index]
+
   # /gallery
   namespace :gallery do
     root to: 'gallery#index'
@@ -35,16 +58,6 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  constraints subdomain: subdomains[:admin] do
-    scope module: :admin, as: :admin do
-      root to: 'users#index'
-      resources :users
-      resources :promotions do
-        resources :users, path: 'students', only: :index
-      end
-    end
-  end
-
   constraints subdomain: subdomains[:developers] do
     scope module: :developers, as: :developers do
       root to: 'developers#homepage'
@@ -52,18 +65,6 @@ IntranetSXB::Application.routes.draw do
     use_doorkeeper do
       skip_controllers :authorizations, :tokens, :authorized_applications
       controllers applications: 'developers/oauth/applications'
-    end
-  end
-
-  constraints subdomain: subdomains[:api] do
-    root to: redirect(subdomain: subdomains[:developers])
-    scope module: :api do
-      scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
-        resources :users, only: :show do
-          get :search, on: :collection
-        end
-        resources :promotions, only: [:index, :show]
-      end
     end
   end
 
