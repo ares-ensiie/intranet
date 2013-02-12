@@ -1,22 +1,23 @@
-.navbar
-  .navbar-inner
-    %ul.nav
-      - @promos.each do |p|
-        - if @promo.eql? p
-          %li.active
-            = link_to p.name, p
-        - else
-          %li
-            = link_to p.name, p
+.container
+  .navbar
+    .navbar-inner
+      %ul.nav
+        - @promos.each do |p|
+          - if @promo.eql? p
+            %li.active
+              = link_to p.name, p
+          - else
+            %li
+              = link_to p.name, p
 
-%ul.thumbnails
-  - @promo.students.each do |s|
-    %li.thumbnail
-      - if s.avatar_file_name != nil
-        = link_to (image_tag s.avatar.url(:thumb)), s
-      - else 
-        = link_to Placeholder.new(150), s
-      %p.caption
-        = "#{s.first_name} #{s.last_name}"
+  %ul.thumbnails
+    - @students.each do |s|
+      %li.thumbnail
+        - if s.avatar_file_name != nil
+          = link_to (image_tag s.avatar.url(:thumb)), s
+        - else 
+          = link_to Placeholder.new(150), s
+        %p.caption
+          = "#{s.first_name} #{s.last_name}"
 
 
