@@ -9,8 +9,9 @@ class Courses::DocumentsController < ApplicationController
   end
 
   def destroy 
+    matter = @document.matter
     @document.destroy 
-    respond_with @document, location: courses_matters_path
+    respond_with @document, location: courses_matter_documents_path(matter.name)
   end
 
   def init_form
