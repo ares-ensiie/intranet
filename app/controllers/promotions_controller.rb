@@ -4,6 +4,7 @@ class PromotionsController < ApplicationController
 
   def show
     @promo = Promotion.find params[:id]
+    @students = @promo.students.asc :first_name
     @promos = Promotion.all
   end
 
