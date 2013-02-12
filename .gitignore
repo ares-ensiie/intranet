@@ -18,3 +18,5 @@
 
 # Ignore public files
 /public/*
+
+.powenv
