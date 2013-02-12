@@ -36,6 +36,8 @@ class User
   field :email
   field :first_name
   field :last_name
+  field :nick_name
+
   field :encrypted_password
 
   field :is_admin, type: Boolean, default: false
