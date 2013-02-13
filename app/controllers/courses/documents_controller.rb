@@ -3,7 +3,7 @@ class Courses::DocumentsController < ApplicationController
   load_and_authorize_resource class: Courses::Document
 
   def index
-    @matter = Courses::Matter.where(name: params[:matter_id]).first
+    @matter = Courses::Matter.find params[:matter_id].downcase
     @documents = Courses::Document.where matter: @matter 
     respond_with(:matter, @documents)
   end
@@ -11,21 +11,7 @@ class Courses::DocumentsController < ApplicationController
   def destroy 
     matter = @document.matter
     @document.destroy 
-    respond_with @document, location: courses_matter_documents_path(matter.name)
-  end
-
-  def init_form
-    if params.has_key? :matter_id then
-      matter = Courses::Matter.where name: params[:matter_id]
-      if matter.count == 1 then
-        @matter_name = matter.first.name
-        @matter_year = matter.first.year.to_s
-      end
-    else
-      @matter_name = ""
-      @matter_year = ""
-    end
-    @matters = Courses::Matter.all.map do |m| [m.name, m.year] end 
+    respond_with @document, location: courses_matter_documents_path(matter)
   end
 
   def new 
@@ -35,12 +21,7 @@ class Courses::DocumentsController < ApplicationController
   def create
     if params[:courses_document].has_key? "matter" then 
       matter_name = params[:courses_document][:matter]
-      req = Courses::Matter.where(name: matter_name)
-      if req.count == 0 then
-        @matter = Courses::Matter.create name: matter_name, year: params[:document_matter_year]
-      else
-        @matter = req.first 
-      end 
+      @matter = Courses::Matter.find_or_create_by name: matter_name
     end
 
     @document.author = current_user
@@ -52,7 +33,23 @@ class Courses::DocumentsController < ApplicationController
     if @document.matter.errors.any? then
       respond_with @document.matter 
     else 
-      respond_with @document, location: courses_matter_documents_path(@document.matter.name)
+      respond_with @document, location: courses_matter_documents_path(@matter)
     end
+  end
+
+  protected
+
+  def init_form
+    if params.has_key? :matter_id then
+      matter = Courses::Matter.find params[:matter_id].downcase
+      if matter != nil then
+        @matter_name = matter.name
+        @matter_year = matter.year.to_s
+      end
+    else
+      @matter_name = ""
+      @matter_year = ""
+    end
+    @matters = Courses::Matter.all.map do |m| [m.name, m.year] end 
   end
 end

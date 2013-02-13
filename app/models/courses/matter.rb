@@ -1,10 +1,13 @@
 class Courses::Matter
   include Mongoid::Document
+  include Mongoid::Slug
   
   field :name, type: String 
   validates :name, uniqueness: true, format: { with: /^[A-Z]{3,4}[0-9]?$/ }
   field :year, type: String
   validates :year, inclusion: { in: ["1A", "2A", "3A"] }
+
+  slug :name
 
   validates_presence_of :name, :year
 
