@@ -76,7 +76,7 @@ IntranetSXB::Application.configure do
     :domain         => 'staging.ares-ensiie.eu',
     :authentication => :plain,
   }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { :host => 'staging.ares-ensiie.eu' }
 
   config.paperclip_defaults = {
