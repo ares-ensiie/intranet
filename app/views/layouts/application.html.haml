@@ -2,78 +2,79 @@
 %head
   %title IntranetSXB
   = stylesheet_link_tag    "application", :media => "all"
-  = javascript_include_tag "application"
   = csrf_meta_tags
 %body
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container-fluid
-        = link_to (image_tag "logo-32px.png"), root_path, class: "brand"
-        %ul.nav
-          %li
-            %h5
-              %a Services ARES : 
-          %li 
-            %a{href: "https://bug.ares-ensiie.eu"}Bug Tracker
-          %li
-            %a{href: "https://git.ares-ensiie.eu"}Gitlab
-          %li
-            %a{href: "http://wiki.ares-ensiie.eu"}Wiki 
-        %ul.nav.pull-right
-          - if user_signed_in?
-            %li.dropdown
-              %a.dropdown-toggle(data-toggle="dropdown")
-                = current_user.name
-                %b.caret
-              %ul.dropdown-menu
-                %li= link_to 'Mon compte', edit_account_path
-                %li= link_to 'Applications', oauth_authorized_applications_path
-                %li.divider
-                %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
-          - else
-            %li= link_to 'Connexion', new_user_session_path
-  .contrainer-fluid
-    .row-fluid
-      .span2
-        %ul.menu.nav.nav-list
-          %li
-            %a{href: root_path}
-              %i.icon-home
-              Accueil
-          %li
-            %a{href: promotions_path}
-              %i.icon-th
-              Trombi
-          %li
-            %a{href: gallery_root_path}
-              %i.icon-camera
-              Galerie
-          %li
-            %a{href: courses_matters_path}
-              %i.icon-book
-              Cours
-          %li
-            %a.disable
-              %i.icon-briefcase
-              Stage
-          %li 
-            %a.disable
-              %i.icon-plane
-              Étranger
+  #wrap
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          = link_to (image_tag "logo-32px.png"), root_path, class: "brand"
+          %ul.nav
+            %li
+              %h5
+                %a Services ARES : 
+            %li 
+              %a{href: "https://bug.ares-ensiie.eu"}Bug Tracker
+            %li
+              %a{href: "https://git.ares-ensiie.eu"}Gitlab
+            %li
+              %a{href: "http://wiki.ares-ensiie.eu"}Wiki 
+          %ul.nav.pull-right
+            - if user_signed_in?
+              %li.dropdown
+                %a.dropdown-toggle(data-toggle="dropdown")
+                  = current_user.name
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to 'Mon compte', edit_account_path
+                  %li= link_to 'Applications', oauth_authorized_applications_path
+                  %li.divider
+                  %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'Connexion', new_user_session_path
+    .container-fluid
+      .row-fluid
+        .span2
+          %ul.menu.nav.nav-list
+            %li
+              %a{href: root_path}
+                %i.icon-home
+                Accueil
+            %li
+              %a{href: promotions_path}
+                %i.icon-th
+                Trombi
+            %li
+              %a{href: gallery_root_path}
+                %i.icon-camera
+                Galerie
+            %li
+              %a{href: courses_matters_path}
+                %i.icon-book
+                Cours
+            %li
+              %a.disable
+                %i.icon-briefcase
+                Stage
+            %li 
+              %a.disable
+                %i.icon-plane
+                Étranger
 
-        %ul.nav.nav-list.menu
-          %li 
-            %h5
-              Applications
-          %li.coming
-            %a.disable
-              Ragots
-              %span
-                Bientôt
-      .span10
-        = yield
+          %ul.nav.nav-list.menu
+            %li 
+              %h5
+                Applications
+            %li.coming
+              %a.disable
+                Ragots
+                %span
+                  Bientôt
+        .span10
+          = yield
+    #push
 
-  %footer
+  #footer
     .container
       %small
         N'hésitez pas à reporter les bugs ou les idées d'améliorations sur le bug tracker merci !

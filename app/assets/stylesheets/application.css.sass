@@ -4,14 +4,14 @@
 
 @import bootstrap
 
+body
+  height: 100%
+
 .navbar .brand 
   max-height: 40px
   overflow: visible
   padding-top: 0
   padding-bottom: 0
-
-body
-  padding-top: 60px
 
 .menu
   top: 40px 
@@ -43,10 +43,19 @@ body
       color: red
       font-size: 10px
 
-footer
-  position: fixed
-  bottom: 0
-  width: 100%
+#wrap
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -32px
+  > .container-fluid
+    padding-top: 60px
+
+#push
+  height: 32px
+
+#footer
+  height: 32px
   background-color: #f2f2f2
   .container
     margin-top: 10px 
