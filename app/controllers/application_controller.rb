@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include UrlHelper
   protect_from_forgery
   respond_to :html, :json
   prepend_before_filter :protect_application! if Rails.env.staging?
