@@ -1,5 +1,16 @@
-<p>Welcome <%= @resource.email %>!</p>
+<h2>Ouverture du compte de <%= @resource.first_name + " " + @resource.last_name %> !</h2>
 
-<p>You can confirm your account email through the link below:</p>
+<%= image_tag "logo-128px.png", style: "display:block;margin-left:auto;margin-right:auto" %>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>Bienvenu sur l'intranet des iiens de Strasbourg. Pour activer ton compte, merci de cliquer sur le lien ci-dessous :</p>
+
+<p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>Ceci est une première itération, nous souhaitions déjà publier quelque chose, nous espérons pouvoir faire évoluer la plateforme
+au fur et à mesure du temps. Et ceci avec votre aide également : en effet le site étant open-source 
+(<a href="http://github.com/ares-ensiie/intranet" alt="Github Intranet">Lien Github</a>) vous êtes libres de nous filer un coup de main !
+<br\></p>
+
+<pre>
+L'équipe d'ARES
+</pre>
