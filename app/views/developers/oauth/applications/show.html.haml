@@ -6,6 +6,11 @@
 %h2 Client secret
 %pre= @application.secret
 
+%h2 URL :
+%pre
+  - link = user_url current_user, subdomain: "api", client_id: @application.uid, client_secret: @application.secret
+  = link_to link, link
+
 %h2 Supprimer l'application
 .alert.alert-error
   = text_field_tag 'name', '', placeholder: @application.name
