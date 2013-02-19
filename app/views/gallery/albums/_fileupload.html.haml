@@ -1,6 +1,6 @@
 = form_for @photo, :url => gallery_album_photos_path([@album, @photo]), :html => { :multipart => true, :id => "fileupload"  } do |f|
-  .row.fileupload-buttonbar
-    .span7
+  .container
+    .row.fileupload-buttonbar
       %span.btn.btn-success.fileinput-button
         %i.icon-plus.icon-white
         %span
@@ -19,9 +19,6 @@
         %span
           = t('fileupload.delete_multi')
       %input.toggle{:type=>"checkbox"}
-    .span5
-      .progress.progress-success.progress-striped.active.fade
-        .bar{:style=>"width:0%;"}
   .fileupload-loading
   %br
   %table.table.table-striped

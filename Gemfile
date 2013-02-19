@@ -14,7 +14,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bootstrap-sass'
   gem 'bootstrap-addons-rails'
+  gem 'bootstrap-datepicker-rails'
   gem 'chosen-rails'
+
+  gem 'jquery-rails'
+  gem 'jquery-fileupload-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -23,8 +27,6 @@ group :assets do
   gem 'asset_sync'
 end
 
-gem "jquery-rails"
-gem "jquery-fileupload-rails"
 gem "placeholder"
 
 gem 'haml'
@@ -45,9 +47,6 @@ gem 'kaminari'
 # API
 gem 'doorkeeper'
 gem 'rabl'
-
-group :development do
-end
 
 group :production, :staging do
   gem 'aws-sdk'

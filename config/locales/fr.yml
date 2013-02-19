@@ -10,3 +10,10 @@ fr:
     mailer:
       confirmation_instructions:
         subject: "Confirmation du compte pour l'intranet d'ARES"
+  mongoid:
+    errors:
+      models:
+        gallery/album:
+          attributes:
+            name:
+             taken: Nom d'album déjà existant
