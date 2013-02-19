@@ -1,5 +1,8 @@
 require 'csv'
 
+# CSV Structure
+# Username, Promotion, First name, Last name, Email, IsAdmin?
+
 namespace :users do
   desc "Manage users importation"
 
@@ -8,13 +11,14 @@ namespace :users do
     while t = f.readline do
       user = User.new 
       user.username = t[0]
-      user.first_name = t[1].split(" ").each{|word| word.capitalize!}.join(" ")
-      user.last_name = t[2].split(" ").each{|word| word.capitalize!}.join(" ")
-      user.email = t[3]
-      m = t[0].match(/[0-9]+/)[0]
-      p = Promotion.find_or_create_by name: m
+      user.first_name = t[2].split(" ").each{|word| word.capitalize!}.join(" ")
+      user.last_name = t[3].split(" ").each{|word| word.capitalize!}.join(" ")
+      user.email = t[4]
+      p = Promotion.find_or_create_by name: t[1]
+      if t[5].eql? "1" then
+        user.is_admin = true
+      end
       user.promotion = p
-      picts = []
       Dir.foreach "#{Rails.root}/data" do |f|
         if !f.eql? "." and !f.eql? ".." and File.directory? "#{Rails.root}/data/#{f}" then
           Dir.foreach "#{Rails.root}/data/#{f}" do |pict_file|
