@@ -1,4 +1,4 @@
-= form_for @album do |f|
+= form_for @album, html: { class: "form-horizontal" } do |f|
   -if !@album.errors.empty?
     .text-error
       Échec de la création de l'album :
@@ -6,25 +6,37 @@
         - @album.errors.map do |k,v|
           %li
             = k.to_s.capitalize + " : " + v.to_s
-  %fieldset
-    .span3
-      = f.label :name, "Nom"
-      = f.text_field :name, class: "textfield"
-    .span3
-      = f.label :date, "Date"
-      = f.date_select :date, :order => [:day, :month, :year]
-    .span4
-      = f.label :desc, "Description"
-      = f.text_area :desc, rows: 4
   .row
-    .span2
+    .span5
+      .control-group
+        = f.label :name, "Nom", class: "control-label"
+        .controls
+          = f.text_field :name
+      .control-group
+        = f.label :date, "Date", class: "control-label"
+        .controls
+          #gallery_album_date_picker.input-append.date
+            = f.text_field :date, value: (@album.date.strftime("%d/%m/%Y") if @album.date), readonly: true
+            %span.add-on
+              %i.icon-calendar
+    .span5
+      .control-group
+        = f.label :desc, "Description", class: "control-label"
+        .controls
+          = f.text_area :desc, rows: 4
+  .row
+    .form-actions
       = f.submit class: "btn btn-success"
-    .span2
       - if current_user.is_admin?
         = f.label :published, f.check_box(:published) + " Publié ?", class: "checkbox text-error"
 - if @current_action.eql? "edit"
-  .row
-    %br
+  .offset1
     %h2 Gestion des photos
     = render 'fileupload'
 
+:coffeescript
+  $("#gallery_album_date_picker").datepicker {
+    format: 'dd/mm/yyyy',
+    weekStart: 1
+  }
+        
