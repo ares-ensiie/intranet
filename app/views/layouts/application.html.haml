@@ -2,6 +2,7 @@
 %head
   %title IntranetSXB
   = stylesheet_link_tag    "application", :media => "all"
+  = javascript_include_tag "application"
   = csrf_meta_tags
 %body
   #wrap
@@ -83,4 +84,3 @@
           En utilisant nos services vous vous engagez à respecter la 
           %a{href: "http://services-numeriques.unistra.fr/services-osiris/cert-osiris/charte-osiris.html"}Charte Osiris
 
-  = javascript_include_tag "application"
