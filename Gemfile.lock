@@ -270,6 +270,7 @@ DEPENDENCIES
   devise
   doorkeeper
   factory_girl_rails
+  fog
   grape
   haml
   jquery-fileupload-rails

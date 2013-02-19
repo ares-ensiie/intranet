@@ -33,6 +33,7 @@ gem 'simple_form'
 gem 'grape'
 gem 'devise'
 gem 'cancan'
+gem 'fog'
 
 gem 'mongoid'
 gem 'mongoid-paperclip'
