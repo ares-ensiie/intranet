@@ -1,16 +1,19 @@
 <h2>Ouverture du compte de <%= @resource.first_name + " " + @resource.last_name %> !</h2>
 
-<%= image_tag "logo-128px.png", style: "display:block;margin-left:auto;margin-right:auto" %>
+<h1><%= link_to root_url, root_url %>
 
 <p>Bienvenu sur l'intranet des iiens de Strasbourg. Pour activer ton compte, merci de cliquer sur le lien ci-dessous :</p>
 
 <p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
 
-<p>Ceci est une première itération, nous souhaitions déjà publier quelque chose, nous espérons pouvoir faire évoluer la plateforme
+<p>Ceci est une première itération du dévelopment de cette plateforme de partage d'information entre les étudiants. 
+Nous souhaitions déjà publier quelque chose, nous espérons pouvoir faire évoluer l'application
 au fur et à mesure du temps. Et ceci avec votre aide également : en effet le site étant open-source 
-(<a href="http://github.com/ares-ensiie/intranet" alt="Github Intranet">Lien Github</a>) vous êtes libres de nous filer un coup de main !
+(<a href="http://github.com/ares-ensiie/intranet" alt="Github Intranet">Lien Github</a>) vous êtes libres
+de nous filer un coup de main pour accélérer son évolution !
 <br\></p>
 
 <pre>
+--
 L'équipe d'ARES
 </pre>
