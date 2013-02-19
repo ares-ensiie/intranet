@@ -21,7 +21,7 @@ class Courses::DocumentsController < ApplicationController
   def create
     if params[:courses_document].has_key? "matter" then 
       matter_name = params[:courses_document][:matter]
-      @matter = Courses::Matter.find_or_create_by name: matter_name
+      @matter = Courses::Matter.find_or_create_by name: matter_name, year: params[:document_matter_year]
     end
 
     @document.author = current_user
@@ -29,6 +29,7 @@ class Courses::DocumentsController < ApplicationController
     @document.release_date = DateTime.now
     @document.save
 
+    params.delete(:matter_id)
     init_form
     if @document.matter.errors.any? then
       respond_with @document.matter 
