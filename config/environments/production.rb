@@ -88,6 +88,7 @@ IntranetSXB::Application.configure do
       region: ENV['FOG_REGION'],
     },
     fog_directory: ENV['FOG_DIRECTORY'],
-    fog_host: "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+    fog_host: "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com",
+    fog_public: true
   }
 end
