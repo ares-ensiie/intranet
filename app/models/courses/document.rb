@@ -2,7 +2,7 @@ class Courses::Document
   include Mongoid::Document
   include Mongoid::Paperclip
   
-  has_mongoid_attached_file :file, url: "/courses/documents/:id.:extension"
+  has_mongoid_attached_file :file
   validates :file, attachment_presence: true
   validates :file, attachment_content_type: { 
     content_type: ["application/xpdf", "application/pdf", "application/x-gzip", 
