@@ -4,3 +4,9 @@ fr:
     start_upload: Uploader
     cancel_upload: Annuler
     delete_multi: Suppresions
+
+fr:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation du compte pour l'intranet d'ARES"
