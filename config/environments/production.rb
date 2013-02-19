@@ -80,13 +80,14 @@ IntranetSXB::Application.configure do
   config.action_mailer.default_url_options = { :host => 'iiens.eu' }
 
   config.paperclip_defaults = {
-    :storage => :fog,
-    :fog_credentials => {
-      :provider => "AWS",
-      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-      :region => "eu-west-1",
+    storage: :fog,
+    fog_credentials: {
+      provider: ENV['FOG_PROVIDER'],
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      region: ENV['FOG_REGION'],
     },
-    :fog_host => "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+    fog_directory: ENV['FOG_DIRECTORY'],
+    fog_host: "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
   }
 end
