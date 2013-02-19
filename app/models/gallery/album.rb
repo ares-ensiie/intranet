@@ -1,6 +1,5 @@
 class Gallery::Album
   include Mongoid::Document
-  include Mongoid::MultiParameterAttributes
 
   field :name, :type => String, :default => ""
   field :desc, :type => String, :default => ""
