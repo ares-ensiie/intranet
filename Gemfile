@@ -34,7 +34,6 @@ gem 'grape'
 gem 'devise'
 gem 'cancan'
 
-gem 'omniauth-ldap', :git => 'https://github.com/ares-ensiie/omniauth-ldap.git'
 gem 'mongoid'
 gem 'mongoid-paperclip'
 

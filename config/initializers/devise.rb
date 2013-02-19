@@ -230,11 +230,11 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
   
-  config.omniauth :ldap, :host => 'faxe.ares',
-    :base => 'ou=users,dc=ares',
-    :uid => 'uid',
-    :port => 389,
-    :method => :plain,
-    :bind_dn => 'cn=admin,dc=ares',
-    :password => 'secret'
+  # config.omniauth :ldap, :host => 'host',
+  #   :base => 'base',
+  #   :uid => 'uid',
+  #   :port => 389,
+  #   :method => :plain,
+  #   :bind_dn => 'admin_dn',
+  #   :password => 'passwd'
 end
