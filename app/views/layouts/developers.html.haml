@@ -37,10 +37,10 @@
                 = current_user.name
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to 'Mon compte', edit_account_path
-                %li= link_to 'Applications', oauth_authorized_applications_path
+                %li= link_to 'Mon compte', edit_account_url(subdomain:"")
+                %li= link_to 'Applications', oauth_authorized_applications_url(subdomain:"")
                 %li.divider
-                %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
+                %li= link_to 'Deconnexion', destroy_user_session_url(subdomain: ""), method: :delete
           - else
-            %li= link_to 'Connexion', new_user_session_path
+            %li= link_to 'Connexion', new_user_session_url(subdomain: "")
   .container= yield
