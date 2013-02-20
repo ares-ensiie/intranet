@@ -30,7 +30,6 @@ end
 gem "placeholder"
 
 gem 'haml'
-gem 'coffee-filter'
 gem 'simple_form'
 gem 'grape'
 gem 'devise'
