@@ -17,11 +17,11 @@
             .caption
               .label.label-important
                 Attente de validation
-
-              - if current_user.is_admin? 
-                = link_to "Valider", edit_gallery_album_path(a), class: "btn btn-warning"
               - if current_user.is_admin? or a.author == current_user 
-                = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
+                .album-controls
+                  = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
+                  - if current_user.is_admin? 
+                    = link_to "Valider", edit_gallery_album_path(a), class: "btn btn-warning"
   .row
     - if @albums.any?
       %ul.thumbnails
