@@ -3,7 +3,7 @@ fr:
     add_files: Fichiers
     start_upload: Uploader
     cancel_upload: Annuler
-    delete_multi: Suppresions
+    delete_multi: Suppressions
 
 fr:
   devise:
@@ -13,7 +13,11 @@ fr:
   mongoid:
     errors:
       models:
+        courses/matter:
+          attributes:
+            name:
+              invalid: "Le nom du cours est invalide"
         gallery/album:
           attributes:
             name:
-             taken: Nom d'album déjà existant
+             taken: "Cet album existe déjà"
