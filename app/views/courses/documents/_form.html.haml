@@ -30,7 +30,7 @@
     .control-group
       = f.label :matter, "Cours : ", class: "control-label"
       .controls
-        = f.text_field :matter, value: @matter_name, list: "courses_document_matters", autocomplete: false, placeholder: "Votre UE"
+        = f.text_field :matter, value: @matter_name, list: "courses_document_matters", autocomplete: "off", placeholder: "Votre UE"
         = content_tag :datalist, nil, id: "courses_document_matters"
     .control-group 
       = label_tag :type, "Type de document : ", class: "control-label"
