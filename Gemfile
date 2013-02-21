@@ -49,7 +49,7 @@ gem 'rabl'
 
 group :production, :staging do
   gem 'aws-sdk'
-  gem 'unicorn'
+  gem 'puma'
 end
 
 group :development, :test do
