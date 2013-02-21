@@ -145,6 +145,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.5)
+    newrelic_rpm (3.5.6.55)
     nokogiri (1.5.6)
     origin (1.0.11)
     orm_adapter (0.4.0)
@@ -281,6 +282,7 @@ DEPENDENCIES
   mongoid-paperclip
   mongoid-rspec
   mongoid_slug
+  newrelic_rpm
   placeholder
   pry
   pry-remote

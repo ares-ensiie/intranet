@@ -50,6 +50,7 @@ gem 'rabl'
 group :production, :staging do
   gem 'aws-sdk'
   gem 'puma'
+  gem 'newrelic_rpm'
 end
 
 group :development, :test do
