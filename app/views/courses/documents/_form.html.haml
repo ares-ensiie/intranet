@@ -40,6 +40,6 @@
       .controls
         = f.submit
 
-= javascript_include_tag "courses"
-:javascript 
-  var matters = #{@matters.to_json}
+:coffeescript
+  @matters = #{@matters.to_json}
+  courses_setup_completion()

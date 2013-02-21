@@ -2,14 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #
-#= require bootstrap/load-image.min
-#= require bootstrap/image-gallery.min
-#= require jquery-fileupload
-#
-
-
-basename = (path) ->
-  path.replace( /.*\//, "").replace( /\..*/, "")
 
 $ ->
   $("#album_fileinput").fileupload {

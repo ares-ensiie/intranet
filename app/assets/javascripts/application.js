@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload
 //= require bootstrap
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr
+//= require bootstrap/load-image.min
+//= require bootstrap/image-gallery.min
+//= require_tree .
+//= require_self
