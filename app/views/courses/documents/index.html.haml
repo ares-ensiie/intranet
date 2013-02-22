@@ -18,7 +18,7 @@
             %th Propriétaire
             %th Type
             %th Date de publication
-            - if current_user.is_admin?
+            - if @user_is_document_owner
               %th Action
         %tbody
           - @documents.each do |d|
@@ -28,7 +28,10 @@
               %td=d.author.username
               %td=d.type
               %td=d.release_date 
-              - if current_user.is_admin?
+              - if @user_is_document_owner or current_user.is_admin?
                 %td
-                  =link_to "Supprimer", courses_matter_document_path(@matter, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
+                  - if d.author.eql? current_user
+                    =link_to "Editer", edit_courses_matter_document_path(@matter, d), class: "btn btn-mini btn-info"
+                  - if current_user.is_admin?
+                    =link_to "Supprimer", courses_matter_document_path(@matter, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
 
