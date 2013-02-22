@@ -12,7 +12,7 @@ class Courses::Document
   field :name, type: String
 
   field :type, type: String
-  validates :type, inclusion: { in: ["Cours", "Projet", "TD", "TP", "Autre"] }
+  validates :type, inclusion: { in: ["Cours", "Examen", "Projet", "TD", "TP", "Autre"] }
 
   # Initialize when the user has uploaded the file
   field :release_date, type: Date
