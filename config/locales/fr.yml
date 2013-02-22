@@ -17,6 +17,10 @@ fr:
           attributes:
             name:
               invalid: "Le nom du cours est invalide"
+        courses/document:
+          attributes: 
+            file_content_type:
+              invalid: "Type de fichier invalide"
         gallery/album:
           attributes:
             name:
