@@ -12,13 +12,12 @@ class Courses::Document
   field :name, type: String
 
   field :type, type: String
-  validates :type, inclusion: { in: ["Cours", "TD", "TP", "Autre"] }
+  validates :type, inclusion: { in: ["Cours", "Projet", "TD", "TP", "Autre"] }
 
   # Initialize when the user has uploaded the file
   field :release_date, type: Date
 
   field :is_obsolete, type: Boolean, default: false
-  validates :is_obsolete, inclusion: { in: [true, false] }
 
   belongs_to :author, class_name: "User", inverse_of: :documents
   belongs_to :matter, class_name: "Courses::Matter", inverse_of: :documents
