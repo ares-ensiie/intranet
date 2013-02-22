@@ -1,44 +1,42 @@
-%h2 Ajouter un document
-.row
-  = form_for @document, url: courses_matters_path, html: { class: "form-horizontal" } do |f|
-    -if @matter != nil and @matter.errors.any?
-      .text-error
-        Échec lors de la création de l'UE :
-        %ul
-          - @matter.errors.map do |k,v|
-            %li
-              = k.to_s.capitalize + " : " + v.to_s
-    -if @document.errors.any?
-      .text-error
-        Échec de mise en ligne du document :
-        %ul
-          - @document.errors.map do |k,v|
-            %li
-              = k.to_s.capitalize + " : " + v.to_s
-    .control-group
-      = f.label :name, "Nom : ", class: "control-label"
-      .controls 
-        = f.text_field :name, placeholder: "Nom", autofocus: true
-    .control-group
-      = f.label :file, "Fichier : ", class: "control-label"
-      .controls
-        = f.file_field :file 
-    .control-group 
-      = label_tag "document_matter_year", "Année : ", class: "control-label"
-      .controls 
-        = select_tag "document_matter_year", options_for_select(%w(1A 2A 3A), @matter_year)
-    .control-group
-      = f.label :matter, "Cours : ", class: "control-label"
-      .controls
-        = f.text_field :matter, value: @matter_name, list: "courses_document_matters", autocomplete: "off", placeholder: "Votre UE"
-        = content_tag :datalist, nil, id: "courses_document_matters"
-    .control-group 
-      = label_tag :type, "Type de document : ", class: "control-label"
-      .controls
-        = f.select :type, %w(Cours Examen Projet TD TP Autre)
-    .control-group
-      .controls
-        = f.submit
+= form_for @document, url: @url, html: { class: "form-horizontal" } do |f|
+  -if @matter != nil and @matter.errors.any?
+    .text-error
+      Échec lors de la création de l'UE :
+      %ul
+        - @matter.errors.map do |k,v|
+          %li
+            = k.to_s.capitalize + " : " + v.to_s
+  -if @document.errors.any?
+    .text-error
+      Échec de mise en ligne du document :
+      %ul
+        - @document.errors.map do |k,v|
+          %li
+            = k.to_s.capitalize + " : " + v.to_s
+  .control-group
+    = f.label :name, "Nom : ", class: "control-label"
+    .controls 
+      = f.text_field :name, placeholder: "Nom", autofocus: true
+  .control-group
+    = f.label :file, "Fichier : ", class: "control-label"
+    .controls
+      = f.file_field :file 
+  .control-group 
+    = label_tag "document_matter_year", "Année : ", class: "control-label"
+    .controls 
+      = select_tag "document_matter_year", options_for_select(%w(1A 2A 3A), @matter_year)
+  .control-group
+    = f.label :matter, "Cours : ", class: "control-label"
+    .controls
+      = f.text_field :matter, value: @matter_name, list: "courses_document_matters", autocomplete: "off", placeholder: "Votre UE"
+      = content_tag :datalist, nil, id: "courses_document_matters"
+  .control-group 
+    = label_tag :type, "Type de document : ", class: "control-label"
+    .controls
+      = f.select :type, %w(Cours Examen Projet TD TP Autre)
+  .control-group
+    .controls
+      = f.submit
 
 = javascript_include_tag "courses"
 :javascript 
