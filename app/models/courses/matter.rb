@@ -3,7 +3,7 @@ class Courses::Matter
   include Mongoid::Slug
   
   field :name, type: String 
-  validates :name, uniqueness: true, format: { with: /^[A-Z]{3,4}[0-9]?$/ }
+  validates :name, uniqueness: true
   field :year, type: String
   validates :year, inclusion: { in: ["1A", "2A", "3A"] }
 
