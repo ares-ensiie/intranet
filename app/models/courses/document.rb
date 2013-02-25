@@ -22,5 +22,5 @@ class Courses::Document
   belongs_to :author, class_name: "User", inverse_of: :documents
   belongs_to :matter, class_name: "Courses::Matter", inverse_of: :documents
 
-  validates_presence_of :author, :name, :matter, :type
+  validates_presence_of :author, :name, :matter_id, :type
 end
