@@ -1,43 +1,19 @@
-= form_for @document, url: @url, html: { class: "form-horizontal" } do |f|
-  -if @matter != nil and @matter.errors.any?
-    .text-error
-      Échec lors de la création de l'UE :
-      %ul
-        - @matter.errors.map do |k,v|
-          %li
-            = k.to_s.capitalize + " : " + v.to_s
-  -if @document.errors.any?
-    .text-error
-      Échec de mise en ligne du document :
-      %ul
-        - @document.errors.map do |k,v|
-          %li
-            = k.to_s.capitalize + " : " + v.to_s
-  .control-group
-    = f.label :name, "Nom : ", class: "control-label"
-    .controls 
-      = f.text_field :name, placeholder: "Nom", autofocus: true
-  .control-group
-    = f.label :file, "Fichier : ", class: "control-label"
-    .controls
-      = f.file_field :file 
+= simple_form_for @document, url: (@document.new_record? ? new_courses_document_path : courses_matter_document_path(@document.matter, @document)), html: { class: "form-horizontal" } do |f|
+  = f.input :name
+  = f.input :file, required: true
   .control-group 
-    = label_tag "document_matter_year", "Année : ", class: "control-label"
+    = label_tag "document_matter_year", "Année ", class: "control-label"
     .controls 
-      = select_tag "document_matter_year", options_for_select(%w(1A 2A 3A), @matter_year)
-  .control-group
-    = f.label :matter, "Cours : ", class: "control-label"
-    .controls
-      = f.text_field :matter, value: @matter_name, list: "courses_document_matters", autocomplete: "off", placeholder: "Votre UE"
-      = content_tag :datalist, nil, id: "courses_document_matters"
-  .control-group 
-    = label_tag :type, "Type de document : ", class: "control-label"
-    .controls
-      = f.select :type, %w(Cours Examen Projet TD TP Autre)
-  .control-group
-    .controls
-      = f.submit
+      = select_tag "document_matter_year", options_for_select(%w(1A 2A 3A))
+  = f.input :matter_id
+  = f.input :type, collection: %w(Cours Examen Projet TD TP Autre)
 
+  .form-actions
+    = f.button :submit
+
+- if @document.matter != nil
+  :coffeescript
+    window.matter = ["#{@document.matter.name}","#{@document.matter.year}"]
 :coffeescript
   @matters = #{@matters.to_json}
   courses_setup_completion()

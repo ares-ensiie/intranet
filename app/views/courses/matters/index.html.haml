@@ -14,5 +14,5 @@
           %ul
             - v.each do |matter|
               %li
-                = link_to matter.name, courses_matter_documents_path(matter.name)
+                = link_to matter.name, courses_matter_documents_path(matter)
                 %small (#{matter.documents.count})

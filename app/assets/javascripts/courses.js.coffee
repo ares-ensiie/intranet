@@ -1,22 +1,28 @@
 #= require_self
 
 refresh_matters = (elem) ->
-  $("#courses_document_matters").children().remove()
+  year_matters = []
   year = $(elem).val()
   $.each matters, (index,value) ->
     if value[1] == year
-      $("#courses_document_matters").append "<option value=\"" + value[0] + "\">" + value[0] + "</option>"
+      year_matters = year_matters.concat value[0]
+  year_matters
 
 @courses_setup_completion = () ->
-  refresh_matters $("#document_matter_year")
-  $("#document_matter_year").change (event) ->
-    $("#courses_document_matter").val("")
-    refresh_matters(this)
+  selectedMatters
 
-  $("#new_courses_document").submit (event) ->
-    if $("#courses_document_matter").val().length == 0
-      matter = "empty"
-    else
-      matter = $("#courses_document_matter").val()
-    $(this).attr("action", "/courses/" + matter + "/")
+  if window.hasOwnProperty("matter")
+    $("#document_matter_year").val window.matter[1]
+    $("#courses_document_matter_id").val window.matter[0]
+
+  $("#courses_document_matter_id").select2 {
+    tags: ->
+      selectedMatters
+    maximumSelectionSize: 1
+  }
+
+  selectedMatters = refresh_matters $("#document_matter_year")
+  $("#document_matter_year").change (event) ->
+    $("#courses_document_matter_id").select2("val", [])
+    selectedMatters = refresh_matters(this)
 
