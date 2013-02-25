@@ -17,13 +17,15 @@ class Courses::DocumentsController < ApplicationController
   end
 
   def new 
-    @url = courses_matters_path
+    if params[:matter_id].present?
+      @document.matter = Courses::Matter.find params["matter_id"]
+    end
     init_form
   end
 
   def create
-    if params[:courses_document].has_key? "matter" then 
-      matter_name = params[:courses_document][:matter]
+    if params[:courses_document][:matter_id].present? then 
+      matter_name = params[:courses_document][:matter_id]
       @matter = Courses::Matter.find_or_create_by name: matter_name, year: params[:document_matter_year]
     end
 
@@ -34,6 +36,7 @@ class Courses::DocumentsController < ApplicationController
 
     params.delete(:matter_id)
     init_form
+    @url = new_courses_document_path
     if @document.matter.errors.any? then
       respond_with @document.matter 
     else 
@@ -42,13 +45,12 @@ class Courses::DocumentsController < ApplicationController
   end
 
   def edit
-    @url = courses_matter_document_path(:matter, @document)
     init_form
   end
 
   def update
-    matter_name = params[:courses_document][:matter]
-    params[:courses_document].delete(:matter)
+    matter_name = params[:courses_document][:matter_id]
+    params[:courses_document].delete(:matter_id)
     matter = Courses::Matter.find_or_create_by name: matter_name, year: params[:document_matter_year]
     @document.matter = matter
     @document.update_attributes(params[:courses_document])
@@ -59,14 +61,7 @@ class Courses::DocumentsController < ApplicationController
 
   def init_form
     if params.has_key? :matter_id then
-      matter = Courses::Matter.find params[:matter_id].downcase
-      if matter != nil then
-        @matter_name = matter.name
-        @matter_year = matter.year.to_s
-      end
-    else
-      @matter_name = ""
-      @matter_year = ""
+      matter = Courses::Matter.find params[:matter_id]
     end
     @matters = Courses::Matter.all.map do |m| [m.name, m.year] end 
   end

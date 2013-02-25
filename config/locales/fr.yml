@@ -11,6 +11,13 @@ fr:
       confirmation_instructions:
         subject: "Confirmation du compte pour l'intranet d'ARES"
   mongoid:
+    models:
+      courses/matter: Matière
+    attributes:
+      courses/document:
+        name: Nom
+        file: Fichier
+        matter_id: Matière
     errors:
       models:
         courses/matter:
@@ -19,6 +26,8 @@ fr:
               invalid: "Le nom du cours est invalide"
         courses/document:
           attributes: 
+            file:
+              blank: "Pas de fichier sélectionné"
             file_content_type:
               invalid: "Type de fichier invalide"
         gallery/album:

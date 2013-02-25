@@ -8,10 +8,10 @@ subdomains = Hash[subdomains.map{|k, v| [k, "#{v}.staging"]}] if Rails.env.stagi
 IntranetSXB::Application.routes.draw do
 
   as :user do
-      match '/user/confirmation' => 'users/confirmations#update', :via => :put, :as => :update_user_confirmation
+      match '/user/confirmation' => 'users/confirmations#update', via: :put, as: :update_user_confirmation
   end
   devise_for :users, controllers: {
-    :confirmations => 'users/confirmations'
+    confirmations: 'users/confirmations'
   }
 
   constraints subdomain: subdomains[:api] do
@@ -48,12 +48,12 @@ IntranetSXB::Application.routes.draw do
   end
 
   # Add a document without taking care of the matter
-  match "/courses/new" => "courses/documents#new", :via => :get, :as => :new_courses_document
+  match "/courses/new" => "courses/documents#new", via: :get, as: :new_courses_document
   # /courses => courses_path
   namespace :courses do
-    # /courses/:matter_id => courses_matter_documents
+    # /courses/matter_id: courses_matter_documents
     resources :matters, only: [:show, :destroy, :index] , path: '' do
-      # /courses/:matter_id/:doc_id => courses_matter_documents(d)
+      # /courses/:matter_id/doc_id: courses_matter_documents(d)
       resources :documents, path: ''
     end
   end
