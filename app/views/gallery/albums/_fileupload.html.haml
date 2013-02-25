@@ -24,17 +24,17 @@
   %table.table.table-striped
     %tbody.files{"data-toggle"=>"modal-gallery", "data-target"=>"#modal-gallery"}
 
-:javascript
-  var fileUploadErrors = {
+:coffeescript
+  fileUploadErrors = {
     maxFileSize: 'File is too big',
     minFileSize: 'File is too small',
     acceptFileTypes: 'Filetype not allowed',
     maxNumberOfFiles: 'Max number of files exceeded',
     uploadedBytes: 'Uploaded bytes exceed file size',
     emptyResult: 'Empty file upload result'
-  };
+  }
 
 = render "gallery/albums/fileupload/queue"
 = render "gallery/albums/fileupload/index"
-= render "gallery/albums/fileupload/js_include_local" 
+= render "gallery/albums/fileupload/fileupload_init" 
 

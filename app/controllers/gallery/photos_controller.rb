@@ -3,7 +3,8 @@ class Gallery::PhotosController < ApplicationController
 
   def index
     @imgs = Gallery::Album.find(params[:album_id]).photos
-    render json: @imgs.collect { |p| p.to_jq_upload }.to_json
+    render json: {files: @imgs.collect { |p| p.to_jq_upload },
+      length:@imgs.count}.to_json
   end
 
   def destroy 
@@ -15,7 +16,7 @@ class Gallery::PhotosController < ApplicationController
     if @picture.save
       respond_to do |format|
         format.json {
-          render json: [@picture.to_jq_upload].to_json
+          render json: {files: [@picture.to_jq_upload], length: 1}.to_json
         }
       end
     else
