@@ -118,4 +118,9 @@ class User
       !password.nil? || !password_confirmation.nil?
     end
   end
+
+  def is_document_owner?
+    return Courses::Document.where(author: self).count
+  end
+
 end

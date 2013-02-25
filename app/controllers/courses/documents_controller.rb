@@ -2,9 +2,11 @@ class Courses::DocumentsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource class: Courses::Document
 
+
   def index
     @matter = Courses::Matter.find params[:matter_id].downcase
     @documents = Courses::Document.where matter: @matter 
+    @user_is_document_owner = current_user.is_document_owner?
     respond_with(:matter, @documents)
   end
 
@@ -15,6 +17,7 @@ class Courses::DocumentsController < ApplicationController
   end
 
   def new 
+    @url = courses_matters_path
     init_form
   end
 
@@ -36,6 +39,20 @@ class Courses::DocumentsController < ApplicationController
     else 
       respond_with @document, location: courses_matter_documents_path(@matter)
     end
+  end
+
+  def edit
+    @url = courses_matter_document_path(:matter, @document)
+    init_form
+  end
+
+  def update
+    matter_name = params[:courses_document][:matter]
+    params[:courses_document].delete(:matter)
+    matter = Courses::Matter.find_or_create_by name: matter_name, year: params[:document_matter_year]
+    @document.matter = matter
+    @document.update_attributes(params[:courses_document])
+    respond_with @document, location: courses_matter_documents_path(matter)
   end
 
   protected
