@@ -7,7 +7,7 @@ refresh_matters = (elem) ->
     if value[1] == year
       $("#courses_document_matters").append "<option value=\"" + value[0] + "\">" + value[0] + "</option>"
 
-$ ->
+@courses_setup_completion = () ->
   refresh_matters $("#document_matter_year")
   $("#document_matter_year").change (event) ->
     $("#courses_document_matter").val("")
