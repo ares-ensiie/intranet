@@ -20,6 +20,8 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery-fileupload-rails'
 
+  gem 'select2-rails'
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
@@ -62,4 +64,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'mongoid-rspec'
   gem 'sextant'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
