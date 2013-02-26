@@ -1,22 +1,21 @@
-.container
-  .page-header
-    %h1
-      = link_to "←", gallery_root_path
-      = @album.name
-      &nbsp; 
-      - if @album.author.eql?(current_user) or current_user.is_admin?
-        = link_to "Éditer", edit_gallery_album_path(@album)
+.page-header
+  %h1
+    = link_to "←", gallery_root_path
+    = @album.name
+    &nbsp; 
+    - if @album.author.eql?(current_user) or current_user.is_admin?
+      = link_to "Éditer", edit_gallery_album_path(@album)
 
-  .row
-    - if !@album.desc.empty?
-      .span9
-        %h2 Description
-        %p.album_desc=@album.desc
+.row
+  - if !@album.desc.empty?
+    .span9
+      %h2 Description
+      %p.album_desc=@album.desc
 
-  .row
-    - if !@album.photos.empty?
-      #gallery{ "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
-        - @album.photos.each do |p|
-          = link_to (image_tag p.photo.url(:thumb)), p.photo.url , :rel => "gallery", :title => p.name
+.row
+  - if !@album.photos.empty?
+    #gallery{ "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
+      - @album.photos.each do |p|
+        = link_to (image_tag p.photo.url(:thumb)), p.photo.url , :rel => "gallery", :title => p.name
 
 = render 'modal' 

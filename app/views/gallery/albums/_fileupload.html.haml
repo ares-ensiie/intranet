@@ -1,5 +1,5 @@
 = form_for @photo, :url => gallery_album_photos_path([@album, @photo]), :html => { :multipart => true, :id => "fileupload"  } do |f|
-  .container
+  .container-fluid
     .row.fileupload-buttonbar
       %span.btn.btn-success.fileinput-button
         %i.icon-plus.icon-white

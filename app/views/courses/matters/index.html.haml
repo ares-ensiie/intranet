@@ -1,18 +1,17 @@
-.container
-  .page-header
-    %h1
-      =link_to "←", root_path
-      Cours
-    = link_to "Ajouter un document", new_courses_document_path, class: "btn btn-primary"
+.page-header
+  %h1
+    =link_to "←", root_path
+    Cours
+  = link_to "Ajouter un document", new_courses_document_path, class: "btn btn-primary"
 
-  .row
-    -@courses.each_pair do |k,v|
-      %dl.span3
-        %dt
-          %h2=k
-        %dd
-          %ul
-            - v.each do |matter|
-              %li
-                = link_to matter.name, courses_matter_documents_path(matter)
-                %small (#{matter.documents.count})
+.row
+  -@courses.each_pair do |k,v|
+    %dl.span3
+      %dt
+        %h2=k
+      %dd
+        %ul
+          - v.each do |matter|
+            %li
+              = link_to matter.name, courses_matter_documents_path(matter)
+              %small (#{matter.documents.count})
