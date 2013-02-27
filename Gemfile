@@ -36,7 +36,7 @@ gem 'simple_form'
 gem 'grape'
 gem 'devise'
 gem 'cancan'
-gem 'fog'
+gem 'fog', github: 'fog/fog', branch: 'master'
 
 gem 'mongoid'
 gem 'mongoid-paperclip'
