@@ -36,8 +36,11 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
-  resources :users, only: [:show]
-  resources :promotions, only: [:show, :index]
+  namespace :trombi do
+    root to: 'promotions#index'
+    resources :users, only: :show
+    resources :promotions, only: :show
+  end
 
   # /gallery
   namespace :gallery do
