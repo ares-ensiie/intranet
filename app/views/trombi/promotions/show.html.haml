@@ -4,17 +4,17 @@
       - @promos.each do |p|
         - if @promo.eql? p
           %li.active
-            = link_to p.name, p
+            = link_to p.name, [:trombi, p]
         - else
           %li
-            = link_to p.name, p
+            = link_to p.name, [:trombi, p]
 
 %ul.thumbnails
   - @students.each do |s|
     %li.thumbnail
       - if s.avatar_file_name != nil
-        = link_to (image_tag s.avatar.url(:thumb)), s
+        = link_to (image_tag s.avatar.url(:thumb)), [:trombi, s]
       - else 
-        = link_to Placeholder.new(150), s
+        = link_to Placeholder.new(150), [:trombi, s]
       %p.caption
         = "#{s.first_name} #{s.last_name}"
