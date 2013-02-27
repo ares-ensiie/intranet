@@ -1,5 +1,4 @@
-# encoding utf-8
-class UsersController < ApplicationController
+class Trombi::UsersController < Trombi::TrombiController
   prepend_before_filter :authenticate_user!
 
   def show
