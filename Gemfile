@@ -52,12 +52,16 @@ end
 
 group :development, :test do
   gem 'rake'
+
+  # testing
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'json_spec'
   gem 'rspec-rails'
   gem 'mongoid-rspec'
   gem 'sextant'
+  gem 'rb-inotify'
+  gem 'guard-rspec'
 
   # debug
   gem 'pry'
@@ -65,4 +69,5 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+
 end
