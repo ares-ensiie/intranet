@@ -4,39 +4,42 @@
     La galerie
   = link_to "Proposer un album", new_gallery_album_path, class: "btn btn-primary"
 
-.row
-  - if @albums_unpublished.any?
-    %ul.thumbnails
-      - @albums_unpublished.each do |a|
-        %li.thumbnail
-          - if a.photos and a.photos.any?
-            = link_to (image_tag a.photos.first.photo.url(:thumb_square)), gallery_album_path(a)
-          - else
-            = link_to Placeholder.new(200) , gallery_album_path(a)
-          .caption
-            .label.label-important
-              Attente de validation
-            - if current_user.is_admin? or a.author == current_user 
-              .album-controls
-                = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
-                - if current_user.is_admin? 
-                  = link_to "Valider", edit_gallery_album_path(a), class: "btn btn-warning"
-.row
-  - if @albums.any?
-    %ul.thumbnails
-      - @albums.each do |a|
-        %li.thumbnail
-          - if a.photos and a.photos.any?
-            = link_to (image_tag a.photos.first.photo.url(:thumb_square)), gallery_album_path(a)
-          - else
-            = link_to Placeholder.new(200) , gallery_album_path(a)
-          .caption
-            - if current_user.is_admin? or a.author == current_user 
+- if @albums_unpublished.any?
+  .albums
+    - @albums_unpublished.each do |a|
+      .album
+        - if a.photos and a.photos.any?
+          = link_to (image_tag a.photos.first.photo.url(:thumb_square)), gallery_album_path(a)
+        - else
+          = link_to Placeholder.new(200) , gallery_album_path(a)
+        .caption
+          .label.label-important
+            Attente de validation
+          - if can? :destroy, a
+            .album-controls
               = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
-            %h4
-              = a.name
-              - if a.date 
-                %span.album_date
-                  = a.date.strftime("%F")
-            - if !a.desc.empty?
-              %p=a.desc
+              - if current_user.is_admin?
+                = link_to "Valider", edit_gallery_album_path(a), class: "btn btn-warning"
+- if @albums.any?
+  .albums
+    - @albums.each do |a|
+      .album
+        - if a.photos and a.photos.any?
+          = link_to (image_tag a.photos.first.photo.url(:thumb_square)), gallery_album_path(a)
+        - else
+          = link_to Placeholder.new(200) , gallery_album_path(a)
+        .caption
+          - if can? :destroy, a
+            = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
+          %h4
+            = a.name
+            - if a.date
+              %span.album_date
+                = a.date.strftime("%F")
+          - if !a.desc.empty?
+            %p=a.desc
+:coffeescript
+  $('.albums').masonry
+    itemSelector: '.album'
+    columnWidth: (containerWidth) ->
+      containerWidth / 3

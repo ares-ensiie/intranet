@@ -4,7 +4,7 @@ class Gallery::AlbumsController < ApplicationController
   respond_to :html, :json
 
   def show
-  end 
+  end
 
   def destroy
     @album.destroy
@@ -16,22 +16,18 @@ class Gallery::AlbumsController < ApplicationController
     @current_action = "new"
   end
 
-  def create 
+  def create
     @album.author = current_user
     @album.save
-    if(@album.errors.empty?) then 
-      respond_with @album, location: edit_gallery_album_path(@album)
-    else 
-      respond_with @album, location: new_gallery_album_path(@album)
-    end
+    respond_with [:gallery, @album], location: new_gallery_album_path(@album)
   end
 
   def edit
-    @photo = @album.photos.new 
+    @photo = @album.photos.new
     @current_action = "edit"
-  end 
+  end
 
-  def update 
+  def update
     @album.update_attributes(params[:gallery_album])
     if current_user.is_admin?  \
       and params[:gallery_album].has_key? :published then
@@ -39,5 +35,5 @@ class Gallery::AlbumsController < ApplicationController
       @album.save
     end
     respond_with @album
-  end 
+  end
 end

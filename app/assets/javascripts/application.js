@@ -18,6 +18,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr
 //= require bootstrap/load-image.min
 //= require bootstrap/image-gallery.min
+//= require masonry
 //= require select2
 //= require_tree .
 //= require_self

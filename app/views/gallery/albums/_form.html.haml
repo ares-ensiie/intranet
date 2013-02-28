@@ -6,8 +6,8 @@
         - @album.errors.map do |k,v|
           %li
             = k.to_s.capitalize + " : " + v.to_s
-  .row
-    .span5
+  .row-fluid
+    .span6
       .control-group
         = f.label :name, "Nom", class: "control-label"
         .controls
@@ -19,24 +19,22 @@
             = f.text_field :date, value: (@album.date.strftime("%d/%m/%Y") if @album.date), readonly: true
             %span.add-on
               %i.icon-calendar
-    .span5
+    .span6
       .control-group
         = f.label :desc, "Description", class: "control-label"
         .controls
-          = f.text_area :desc, rows: 4
-  .row
+          = f.text_area :desc, rows: 4, class: 'span12'
+  .row-fluid
     .form-actions
       = f.submit class: "btn btn-success"
       - if current_user.is_admin?
         = f.label :published, f.check_box(:published) + " Publié ?", class: "checkbox text-error"
-- if @current_action.eql? "edit"
+- if @album.persisted?
   .offset1
     %h2 Gestion des photos
     = render 'fileupload'
 
 :coffeescript
-  $("#gallery_album_date_picker").datepicker {
-    format: 'dd/mm/yyyy',
+  $("#gallery_album_date_picker").datepicker
+    format: 'dd/mm/yyyy'
     weekStart: 1
-  }
-        
