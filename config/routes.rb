@@ -22,6 +22,11 @@ IntranetSXB::Application.routes.draw do
           get :search, on: :collection
         end
         resources :promotions, only: [:index, :show]
+        namespace :courses do
+          resources :matters, path: '', only: [:index, :show] do
+            resources :documents, path: '', only: [:index, :show]
+          end
+        end
       end
     end
   end
