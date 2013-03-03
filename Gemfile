@@ -46,6 +46,7 @@ group :production, :staging do
 end
 
 group :development, :test do
+  gem 'rake'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'json_spec'
