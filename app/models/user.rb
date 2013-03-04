@@ -76,8 +76,8 @@ class User
     Rabl::Renderer.json(self, 'api/v1/users/user', view_path: 'app/views')
   end
 
-  def self.search(q: '', promotions: [])
-    tire.search load: true do
+  def self.search(q: '*', promotions: [])
+    tire.search load: true, per_page: 1000 do
       query { string q }
       filter :terms, promotion: promotions if promotions.any?
     end

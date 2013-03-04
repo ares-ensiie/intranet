@@ -8,6 +8,7 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
   def search
     promotions_param = params[:promotions] || params[:promotion]
     params[:promotions] = promotions_param.try :split, ','
+    params[:q] = '*' if params[:promotions].try(:any?) and params[:q].blank?
     search = User.search(params.permit(:q, :promotions => []).symbolize_keys)
     @users = search.results
   end
