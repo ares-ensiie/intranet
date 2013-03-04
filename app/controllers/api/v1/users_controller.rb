@@ -6,6 +6,9 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
   end
 
   def search
-    @users = User.search params if params[:q].present?
+    promotions_param = params[:promotions] || params[:promotion]
+    params[:promotions] = promotions_param.try :split, ','
+    search = User.search(params.permit(:q, :promotions => []).symbolize_keys)
+    @users = search.results
   end
 end

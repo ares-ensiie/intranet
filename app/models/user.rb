@@ -5,10 +5,7 @@ class User
   include Mongoid::Paperclip
   include Tire::Model::Search
   include Tire::Model::Callbacks
-
-  if Rails.env.staging? or Rails.env.production? then
-    index_name INDEX_NAME
-  end
+  include ActiveModel::ForbiddenAttributesProtection
 
   has_mongoid_attached_file :avatar, 
     styles: { 
@@ -72,16 +69,17 @@ class User
     indexes :username, analyzer: 'keyword'
     indexes :first_name
     indexes :last_name
-    indexes :name
+    indexes :name, boost: 2.0
   end
 
   def to_indexed_json
     Rabl::Renderer.json(self, 'api/v1/users/user', view_path: 'app/views')
   end
 
-  def self.search(params)
+  def self.search(q: '', promotions: [])
     tire.search load: true do
-      query { string params[:q] } if params[:q].present?
+      query { string q }
+      filter :terms, promotion: promotions if promotions.any?
     end
   end
 
