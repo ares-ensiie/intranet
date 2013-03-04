@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/fog/fog.git
-  revision: 368520f36137b313639e2f81d50ab6fb275ec8ae
+  revision: b3c851cd0778f50f8ae50bcac00a0edd49283843
   branch: master
   specs:
     fog (1.9.0)
@@ -89,7 +89,7 @@ GEM
     doorkeeper (0.6.7)
       railties (~> 3.1)
     erubis (2.7.0)
-    excon (0.18.5)
+    excon (0.19.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -102,7 +102,7 @@ GEM
       tilt
     hashr (0.0.22)
     hike (1.2.1)
-    i18n (0.6.2)
+    i18n (0.6.4)
     journey (1.0.4)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
@@ -137,15 +137,15 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.9)
-    mongoid_slug (2.0.1)
-      mongoid (~> 3.0)
+    mongoid_slug (3.0.0)
+      mongoid (> 3.0)
       stringex (~> 1.4)
-    moped (1.4.2)
+    moped (1.4.3)
     multi_json (1.6.1)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.5)
-    newrelic_rpm (3.5.7.59)
+    net-ssh (2.6.6)
+    newrelic_rpm (3.5.8.70)
     nokogiri (1.5.6)
     origin (1.0.11)
     orm_adapter (0.4.0)
@@ -161,7 +161,7 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry-remote (0.1.6)
+    pry-remote (0.1.7)
       pry (~> 0.9)
       slop (~> 3.0)
     puma (1.6.3)
@@ -239,7 +239,7 @@ GEM
       activemodel (~> 3.0)
       railties (~> 3.0)
     thor (0.17.0)
-    tilt (1.3.3)
+    tilt (1.3.4)
     tire (0.5.4)
       activemodel (>= 3.0)
       hashr (~> 0.0.19)
@@ -249,7 +249,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.35)
+    tzinfo (0.3.36)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
