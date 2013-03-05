@@ -63,7 +63,10 @@ IntranetSXB::Application.routes.draw do
 
   constraints subdomain: subdomains[:developers] do
     scope module: :developers, as: :developers do
-      root to: 'developers#homepage'
+      root to: 'documentation#show', id: 'homepage'
+      namespace :documentation, path: 'doc' do
+        get ':id', action: 'show', as: :static
+      end
     end
     use_doorkeeper do
       skip_controllers :authorizations, :tokens, :authorized_applications
