@@ -29,6 +29,9 @@ gem 'cancan'
 gem 'placeholder'
 gem 'haml'
 gem 'simple_form'
+gem 'redcarpet'
+gem 'pygments.rb'
+gem 'high_voltage'
 
 # API
 gem 'rabl'
