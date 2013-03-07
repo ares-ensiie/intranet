@@ -5,7 +5,6 @@ class User
   include Mongoid::Paperclip
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  include ActiveModel::ForbiddenAttributesProtection
 
   has_mongoid_attached_file :avatar, 
     styles: { 
