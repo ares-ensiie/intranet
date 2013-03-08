@@ -38,8 +38,9 @@
                 = a.date.strftime("%F")
 
 :coffeescript
-  $(window).load ->
-    $('.albums').masonry
+  $container = $('.albums')
+  $container.imagesLoaded ->
+    $container.masonry
       itemSelector: '.album'
       columnWidth: (containerWidth) ->
         containerWidth / 4
