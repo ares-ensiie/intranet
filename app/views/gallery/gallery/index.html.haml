@@ -36,10 +36,9 @@
             - if a.date
               %span.album_date
                 = a.date.strftime("%F")
-          - if !a.desc.empty?
-            %p=a.desc
 :coffeescript
-  $('.albums').masonry
-    itemSelector: '.album'
-    columnWidth: (containerWidth) ->
-      containerWidth / 3
+  $ ->
+    $('.albums').masonry
+      itemSelector: '.album'
+      columnWidth: (containerWidth) ->
+        containerWidth / 3
