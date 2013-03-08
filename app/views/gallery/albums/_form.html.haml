@@ -7,7 +7,7 @@
           %li
             = k.to_s.capitalize + " : " + v.to_s
   .row-fluid
-    .span6
+    .span4
       .control-group
         = f.label :name, "Nom", class: "control-label"
         .controls
@@ -16,7 +16,7 @@
         = f.label :date, "Date", class: "control-label"
         .controls
           #gallery_album_date_picker.input-append.date
-            = f.text_field :date, value: (@album.date.strftime("%d/%m/%Y") if @album.date), readonly: true
+            = f.text_field :date, value: (@album.date.strftime("%m/%Y") if @album.date), readonly: true
             %span.add-on
               %i.icon-calendar
     .span6
@@ -36,5 +36,6 @@
 
 :coffeescript
   $("#gallery_album_date_picker").datepicker
-    format: 'dd/mm/yyyy'
-    weekStart: 1
+    format: 'mm/yyyy'
+    viewMode: 2
+    minViewMode: 1
