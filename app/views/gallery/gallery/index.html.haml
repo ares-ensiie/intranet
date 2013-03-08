@@ -36,9 +36,10 @@
             - if a.date
               %span.album_date
                 = a.date.strftime("%F")
+
 :coffeescript
-  $ ->
+  $(window).load ->
     $('.albums').masonry
       itemSelector: '.album'
       columnWidth: (containerWidth) ->
-        containerWidth / 3
+        containerWidth / 4
