@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ares-ensiie/bootstrap-addons-rails
+  revision: fb99e6d082b03be40841a180ffef5388f5bc51cd
+  specs:
+    bootstrap-addons-rails (0.1.1)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,11 +45,9 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
-    bootstrap-addons-rails (0.1.1)
-      rails
     bootstrap-datepicker-rails (1.0.0.1)
       railties (>= 3.0)
-    bootstrap-sass (2.3.0.1)
+    bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
@@ -201,7 +206,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    rspec-core (2.13.0)
+    rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.0)
@@ -227,7 +232,7 @@ GEM
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    slop (3.4.3)
+    slop (3.4.4)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -240,8 +245,9 @@ GEM
       railties (~> 3.0)
     thor (0.17.0)
     tilt (1.3.5)
-    tire (0.5.4)
+    tire (0.5.5)
       activemodel (>= 3.0)
+      activesupport
       hashr (~> 0.0.19)
       multi_json (~> 1.3)
       rake
@@ -249,7 +255,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.36)
+    tzinfo (0.3.37)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -264,7 +270,7 @@ DEPENDENCIES
   asset_sync
   better_errors
   binding_of_caller
-  bootstrap-addons-rails
+  bootstrap-addons-rails (= 0.1.1)!
   bootstrap-datepicker-rails
   bootstrap-sass
   cancan
