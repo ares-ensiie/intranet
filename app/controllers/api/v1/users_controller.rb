@@ -1,8 +1,13 @@
 class Api::V1::UsersController < Api::V1::ApiV1Controller
-  prepend_before_filter :authenticate_application!
-  load_and_authorize_resource
+  before_filter :authenticate_application!, except: :me
+  load_and_authorize_resource except: :me
+  doorkeeper_for :me
 
   def show
+  end
+
+  def me
+    @user = current_resource_owner
   end
 
   def search
@@ -11,5 +16,10 @@ class Api::V1::UsersController < Api::V1::ApiV1Controller
     params[:q] = '*' if params[:promotions].try(:any?) and params[:q].blank?
     search = User.search(params.permit(:q, :promotions => []).symbolize_keys)
     @users = search.results
+  end
+
+  protected
+  def current_resource_owner
+    User.find(doorkeeper_token.resource_owner_id)
   end
 end
