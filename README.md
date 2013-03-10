@@ -1,4 +1,4 @@
-![build status](https://travis-ci.org/ares-ensiie/intranet.png?branch=master)
+[![build status](https://api.travis-ci.org/ares-ensiie/intranet.png)](https://travis-ci.org/ares-ensiie/intranet)
 
 # Intranet étudiant de l'ENSIIE Strasbourg
 
