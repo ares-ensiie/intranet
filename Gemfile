@@ -41,7 +41,7 @@ gem 'mongoid-paperclip' # uploads
 gem 'mongoid_slug'
 gem 'kaminari' # pagination
 gem 'tire' # ElasticSearch
-gem 'fog', github: 'fog/fog', branch: 'master'
+gem 'fog'
 gem 'strong_parameters'
 
 group :production, :staging do
