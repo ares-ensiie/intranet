@@ -7,11 +7,12 @@ require 'rack/test'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-DatabaseCleaner.clean
-
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include JsonSpec::Helpers
   config.include Mongoid::Matchers
+  config.before :each do
+    DatabaseCleaner.clean
+  end
 end
 
