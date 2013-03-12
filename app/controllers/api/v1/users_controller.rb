@@ -1,12 +1,12 @@
 class Api::V1::UsersController < Api::V1::ApiV1Controller
-  before_filter :authenticate_application!, except: :me
-  load_and_authorize_resource except: :me
-  doorkeeper_for :me
+  before_filter :authenticate_application!, except: :self
+  load_and_authorize_resource except: :self
+  doorkeeper_for :self
 
   def show
   end
 
-  def me
+  def self
     @user = current_resource_owner
   end
 
