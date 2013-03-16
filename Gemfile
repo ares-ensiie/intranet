@@ -7,7 +7,7 @@ group :assets do
   gem 'sass-rails', '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bootstrap-sass'
-  gem 'bootstrap-addons-rails'
+  gem 'bootstrap-addons-rails', '~> 0.1.2'
   gem 'bootstrap-datepicker-rails'
   gem 'chosen-rails'
   gem 'jquery-rails'
