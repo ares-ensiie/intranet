@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/ares-ensiie/bootstrap-addons-rails
-  revision: fb99e6d082b03be40841a180ffef5388f5bc51cd
-  specs:
-    bootstrap-addons-rails (0.1.1)
-      rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,6 +38,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bootstrap-addons-rails (0.1.2)
+      rails
     bootstrap-datepicker-rails (1.0.0.1)
       railties (>= 3.0)
     bootstrap-sass (2.3.1.0)
@@ -270,7 +265,7 @@ DEPENDENCIES
   asset_sync
   better_errors
   binding_of_caller
-  bootstrap-addons-rails (= 0.1.1)!
+  bootstrap-addons-rails (~> 0.1.2)
   bootstrap-datepicker-rails
   bootstrap-sass
   cancan
