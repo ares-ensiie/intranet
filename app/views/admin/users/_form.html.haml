@@ -3,6 +3,7 @@
   = f.input :email
   = f.input :first_name
   = f.input :last_name
-  = f.input :promotion, selected: @user.promotion.id, collection: Promotion.all
+  = f.input :gender, collection: %w(M F)
+  = f.input :promotion, selected: @user.promotion_id, collection: Promotion.all
   .form-actions
     = f.submit class: 'btn btn-primary'
