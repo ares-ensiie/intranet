@@ -16,7 +16,7 @@ class User
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :confirmable
 
   attr_accessible :username, :email, :avatar,
-    :first_name, :last_name,
+    :first_name, :last_name, :gender,
     :password, :password_confirmation, :remember_me,
     :confirmed_at, :promotion
 
@@ -36,6 +36,10 @@ class User
   field :encrypted_password
 
   field :is_admin, type: Boolean, default: false
+  # Default male is not sexism, it's reality !
+  field :gender, type: String, default: 'M'
+  validates :gender, inclusion: { in: ["M", "F"] }
+
 
   ## Rememberable
   field :remember_created_at, type: Time
