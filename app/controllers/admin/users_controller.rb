@@ -17,6 +17,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def update
+    params[:user][:promotion] = Promotion.find(params[:user][:promotion])
     @user.update_attributes params[:user]
     respond_with :admin, @user
   end
