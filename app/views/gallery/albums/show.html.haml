@@ -16,6 +16,6 @@
   - if !@album.photos.empty?
     #gallery{ "data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
       - @album.photos.each do |p|
-        = link_to (image_tag p.photo.url(:thumb)), p.photo.url , :rel => "gallery", :title => p.name
+        = link_to (image_tag p.photo.url(:thumb)), p.photo.url , "data-gallery" => "gallery", :title => p.name
 
 = render 'modal' 
