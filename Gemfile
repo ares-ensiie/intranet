@@ -15,6 +15,7 @@ group :assets do
   gem 'select2-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'asset_sync' # sync assets with s3 or openstack
+  gem 'favicon_maker'
 end
 
 # Database
