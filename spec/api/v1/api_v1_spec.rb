@@ -20,6 +20,7 @@ describe Api::V1 do
       its(:body) { should have_json_path 'first_name' }
       its(:body) { should have_json_path 'last_name' }
       its(:body) { should have_json_path 'promotion' }
+      its(:body) { should have_json_path 'gender' }
     end
   end
 
@@ -39,6 +40,7 @@ describe Api::V1 do
       its(:body) { should have_json_path '0/students/0/email' }
       its(:body) { should have_json_path '0/students/0/first_name' }
       its(:body) { should have_json_path '0/students/0/last_name' }
+      its(:body) { should have_json_path '0/students/0/gender' }
     end
 
     # GET /promotions/:id
@@ -56,6 +58,8 @@ describe Api::V1 do
       its(:body) { should have_json_path 'students/0/email' }
       its(:body) { should have_json_path 'students/0/first_name' }
       its(:body) { should have_json_path 'students/0/last_name' }
+      its(:body) { should have_json_path 'students/0/last_name' }
+      its(:body) { should have_json_path 'students/0/gender' }
     end
   end
 end
