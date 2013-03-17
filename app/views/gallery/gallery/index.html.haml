@@ -15,11 +15,6 @@
         .caption
           .label.label-important
             Attente de validation
-          - if can? :destroy, a
-            .album-controls
-              = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
-              - if current_user.is_admin?
-                = link_to "Valider", edit_gallery_album_path(a), class: "btn btn-warning"
 - if @albums.any?
   .albums
     - @albums.each do |a|
