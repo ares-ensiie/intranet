@@ -24,13 +24,11 @@
         - else
           = link_to Placeholder.new(200) , gallery_album_path(a)
         .caption
-          - if can? :destroy, a
-            = link_to "Supprimer", gallery_album_path(a), confirm: "Supprimer l'album ?", method: "delete", class: "btn btn-error"
-          %h4
+          %h5
             = a.name
             - if a.date
               %span.album_date
-                = a.date.strftime("%F")
+                = a.date.strftime("%m/%Y")
 
 :coffeescript
   $container = $('.albums')
