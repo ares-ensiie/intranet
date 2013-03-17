@@ -1,0 +1,71 @@
+%h1 Liste des Albums
+
+%table.table
+  %thead
+    %tr
+      %th Nom
+      %th Propriétaire
+      %th Nb Photos
+      %th Date
+      %th
+  %tbody
+    - @albums.each do |album|
+      %tr
+        %td= link_to album.name, gallery_album_url(album, subdomain: "")
+        %td= link_to album.author.username, admin_user_path(album.author)
+        %td= album.photos.count
+        %td
+          - if album.date
+            = album.date.strftime("%m/%Y")
+          - else
+            %span.label-info Pas de date
+
+        %td
+          - if album.published
+            %button{name: album.id, class: 'btn btn-small btn-warning btn-unrelease'}
+              Retirer
+          - else
+            %button{name: album.id, class: 'btn btn-small btn-info btn-release'}
+              Publier
+
+          = link_to admin_album_path(album), class: 'btn btn-small btn-danger', confirm: "Sûr ?", method: "DELETE" do
+            %i.icon-remove-circle
+            Supprimer
+
+:coffeescript
+  $ ->
+    onClickUnrelease = (event) ->
+      clicked_btn = $(this)
+      $.post("/albums/" + $(this).attr("name") + "/unrelease", {},
+        ->
+          clicked_btn.hide 100
+          clicked_btn.removeClass "btn-warning"
+          clicked_btn.addClass "btn-info"
+          clicked_btn.removeClass "btn-unrelease"
+          clicked_btn.addClass "btn-release"
+          clicked_btn.html "Publier"
+          clicked_btn.unbind "click"
+          clicked_btn.click onClickRelease
+          clicked_btn.show 100
+      )
+    
+    onClickRelease = (event) ->
+      clicked_btn = $(this)
+      $.post("/albums/" + $(this).attr("name") + "/release", {},
+        ->
+          clicked_btn.hide 100
+          clicked_btn.removeClass "btn-info"
+          clicked_btn.addClass "btn-warning"
+          clicked_btn.removeClass "btn-release"
+          clicked_btn.addClass "btn-unrelease"
+          clicked_btn.html "Retirer"
+          clicked_btn.unbind "click"
+          clicked_btn.click onClickUnrelease
+          clicked_btn.show 100
+      )
+
+    $('.btn-unrelease').click onClickUnrelease
+    $('.btn-release').click onClickRelease
+
+        
+
