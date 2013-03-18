@@ -30,6 +30,10 @@ IntranetSXB::Application.routes.draw do
   constraints subdomain: subdomains[:admin] do
     scope module: :admin, as: :admin do
       root to: 'users#index'
+      resources :albums do
+        post :release
+        post :unrelease
+      end
       resources :users
       resources :promotions do
         resources :users, path: 'students', only: :index

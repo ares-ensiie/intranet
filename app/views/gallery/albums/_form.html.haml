@@ -27,8 +27,6 @@
   .row-fluid
     .form-actions
       = f.submit class: "btn btn-success"
-      - if current_user.is_admin?
-        = f.label :published, f.check_box(:published) + " Publié ?", class: "checkbox text-error"
 - if @album.persisted?
   .offset1
     %h2 Gestion des photos

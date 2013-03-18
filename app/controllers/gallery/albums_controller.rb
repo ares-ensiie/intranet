@@ -6,11 +6,6 @@ class Gallery::AlbumsController < ApplicationController
   def show
   end
 
-  def destroy
-    @album.destroy
-    respond_with @album, location: gallery_root_path
-  end
-
   def new
     @photo = @album.photos.new
     @current_action = "new"
@@ -29,11 +24,6 @@ class Gallery::AlbumsController < ApplicationController
 
   def update
     @album.update_attributes(params[:gallery_album])
-    if current_user.is_admin?  \
-      and params[:gallery_album].has_key? :published then
-      @album.published = params[:gallery_album][:published]
-      @album.save
-    end
     respond_with @album
   end
 end
