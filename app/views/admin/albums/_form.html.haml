@@ -1,0 +1,17 @@
+= simple_form_for [:admin, @album], url: admin_album_path(@album), html: { class: 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :author_id, collection: User.all
+  = f.input :desc, as: :text, input_html: {rows: 3}
+  - if @album.date
+    = f.input :date, input_html: {value: @album.date.strftime("%m/%Y")}
+  -else
+    = f.input :date
+  = f.input :published
+  .form-actions
+    = f.submit class: 'btn btn-primary'
+
+:coffeescript
+  $("#gallery_album_date").datepicker
+    format: 'mm/yyyy'
+    viewMode: 2
+    minViewMode: 1
