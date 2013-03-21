@@ -1,37 +1,36 @@
-.container
-  .page-header 
-    %h1
-      =link_to "← Cours", courses_matters_path
-      ="/"
-      =@matter.name
-    = link_to "Ajouter un document", new_courses_matter_document_path(@matter), class: "btn btn-primary"
-    - if current_user.is_admin?
-      = link_to "Supprimer la matière", courses_matter_path(@matter), method: :delete, class: "btn btn-mini btn-danger", confirm: "Cela supprimera tous les documents associés\nÊtes-vous certain ?"
-  .row
-    - if @documents.empty?
-      %p Il n'y a pas de document pour cette matière
-    - else
-      %table.table.table-striped
-        %thead
+.page-header 
+  %h1
+    =link_to "← Cours", courses_matters_path
+    ="/"
+    =@matter.name
+  = link_to "Ajouter un document", new_courses_matter_document_path(@matter), class: "btn btn-primary"
+  - if current_user.is_admin?
+    = link_to "Supprimer la matière", courses_matter_path(@matter), method: :delete, class: "btn btn-mini btn-danger", confirm: "Cela supprimera tous les documents associés\nÊtes-vous certain ?"
+.row
+  - if @documents.empty?
+    %p Il n'y a pas de document pour cette matière
+  - else
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Nom 
+          %th Propriétaire
+          %th Type
+          %th Date de publication
+          - if @user_is_document_owner
+            %th Action
+      %tbody
+        - @documents.each do |d|
           %tr
-            %th Nom 
-            %th Propriétaire
-            %th Type
-            %th Date de publication
-            - if @user_is_document_owner
-              %th Action
-        %tbody
-          - @documents.each do |d|
-            %tr
+            %td
+              = link_to d.name, d.file.url
+            %td=d.author.username
+            %td=d.type
+            %td=d.release_date 
+            - if @user_is_document_owner or current_user.is_admin?
               %td
-                = link_to d.name, d.file.url
-              %td=d.author.username
-              %td=d.type
-              %td=d.release_date 
-              - if @user_is_document_owner or current_user.is_admin?
-                %td
-                  - if d.author.eql? current_user
-                    =link_to "Editer", edit_courses_matter_document_path(@matter, d), class: "btn btn-mini btn-info"
-                  - if current_user.is_admin?
-                    =link_to "Supprimer", courses_matter_document_path(@matter, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
+                - if d.author.eql? current_user
+                  =link_to "Editer", edit_courses_matter_document_path(@matter, d), class: "btn btn-mini btn-info"
+                - if current_user.is_admin?
+                  =link_to "Supprimer", courses_matter_document_path(@matter, d), method: :delete, confirm: "Certain ?", class: "btn btn-mini btn-danger"
 
