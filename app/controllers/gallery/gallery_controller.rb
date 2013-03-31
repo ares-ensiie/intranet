@@ -7,6 +7,6 @@ class Gallery::GalleryController < ApplicationController
     else
       @albums_unpublished = Gallery::Album.and({published: false}, {author: current_user})
     end
-    @albums = Gallery::Album.where(published: true).order_by date: :asc
+    @albums = Gallery::Album.where(published: true).order_by date: :desc
   end
 end
