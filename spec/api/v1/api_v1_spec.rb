@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'rack/test'
 
 describe Api::V1 do
   let(:application) { FactoryGirl.create :oauth_application }

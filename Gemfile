@@ -58,6 +58,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'mongoid-rspec'
   gem 'sextant'
+  gem 'parallel_tests'
+  gem 'zeus-parallel_tests'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
 
   # debug
   gem 'pry'
