@@ -5,6 +5,7 @@ FactoryGirl.define do
     first_name 'Paul'
     last_name 'Chobert'
     password 'abcd123'
+    gender 'M'
     promotion
 
     trait :admin do

@@ -36,4 +36,6 @@ IntranetSXB::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { host: "http://localhost:3000/" }
+
+  Paperclip.options[:log] = false
 end
