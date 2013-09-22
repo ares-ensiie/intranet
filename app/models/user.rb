@@ -13,7 +13,9 @@ class User
       original: "500x500>"
     }
 
-  devise :database_authenticatable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :rememberable,
+    :trackable, :validatable, :confirmable,
+    :recoverable
 
   attr_accessible :username, :email, :avatar,
     :first_name, :last_name, :gender,
