@@ -13,5 +13,8 @@ class Ability
     can [:update,:destroy], Gallery::Photo do |photo|
       user.id.eql? photo.album.author.id 
     end
+    can [:read, :update, :destroy], Oauth::Application do |app|
+      app.owner.eql? current_user
+    end
   end
 end
