@@ -18,6 +18,9 @@ group :assets do
   gem 'favicon_maker'
 end
 
+# i18n
+gem 'rails-i18n'
+
 # Database
 gem 'mongoid', '~> 3.1.0'
 
