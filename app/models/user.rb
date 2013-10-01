@@ -58,6 +58,10 @@ class User
   field :confirmation_token
   field :confirmation_sent_at, type: DateTime
 
+  ## Recoverable
+  field :reset_password_token,   :type => String
+  field :reset_password_sent_at, :type => Time
+
   slug :username
 
   default_scope order_by([:username, :asc])
