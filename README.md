@@ -11,3 +11,55 @@
 - Renseignement logement colloc, bon plan etc.
 - Ragots !
 - Drink IIt ?
+
+##Contribuer
+###Installation
+
+Installer ruby:
+
+- MacOS: 
+	
+		brew install ruby
+- Debian:
+	
+		sudo apt-get install ruby
+		
+		
+Cloner/forker le repo.
+	
+
+Aller dans le dossier du repo:
+
+	cd intranet
+
+Installer les dépendances:
+
+	bundle install
+	
+Cela peut prendre un peu de temps.
+	
+Si un message d'erreur disant que `bundle` est inconnu, faire:
+
+	gem install bundle
+	
+###Base de données
+Celle utilisée pour l'intranet est `MongoDB` (NoSQL).
+Pour l'installer:
+
+- MacOS: 
+
+		brew install mongodb
+- Debian: 
+
+		sudo apt-get install mongodb-10gen
+
+###Développement
+Pour lancer le serveur:
+
+	rails server
+	
+Par défaut le serveur se lance sur le port 3000. On peut voir le résultat sur [http://localhost:3000](http://localhost:3000]).
+
+Pour lancer la base de données:
+		
+		mongod
