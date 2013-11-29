@@ -13,6 +13,9 @@
 - Drink IIt ?
 
 ##Contribuer
+
+Note: pour MacOS la procédure d'installation utilise [Homebrew](http://brew.sh/), un gestionnaire de package très bien pensé et propre à MacOS (l'équivalent de `apt-get` sous Ubuntu). Pensez à faire `brew update` pour mettre à jour la liste des packages, avant de commencer l'installation. 
+
 ###Installation
 
 Installer ruby:
@@ -22,6 +25,15 @@ Installer ruby:
 	
 - Debian: 
 `sudo apt-get install ruby`
+
+Cependant il y a un problème de version de Ruby. La plupart des distributions vont télécharger avec ces commandes Ruby 1.8 alors qu'il faut Ruby 2.0.
+Pour pallier à ce problème il faut installer Ruby avec `rbenv`, un utilitaire qui gère correctement les versions de Ruby.
+
+- MacOS:
+`brew install rbenv ruby-build` 
+
+- Debian:
+
 				
 Cloner/forker le repo.
 	
