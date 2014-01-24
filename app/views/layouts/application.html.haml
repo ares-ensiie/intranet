@@ -14,14 +14,14 @@
           %ul.navbar-nav
             %li
               %h5
-                Services ARES : 
+                Services ARES :
             %li
               %h5
                 %a{href: "https://git.ares-ensiie.eu"}Gitlab
             %li
               %h5
-                %a{href: "http://doc.ares-ensiie.eu"}Documentation 
-          %ul.nav.pull-right
+                %a{href: "http://doc.ares-ensiie.eu"}Documentation
+          %ul.navbar-nav.pull-right
             - if user_signed_in?
               %li.dropdown
                 %a.dropdown-toggle(data-toggle="dropdown")
@@ -33,7 +33,8 @@
                   %li.divider
                   %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
             - else
-              %li= link_to 'Connexion', new_user_session_path
+              %li
+                %h5= link_to 'Connexion', new_user_session_path
     .container
       .row
         .col-md-2
