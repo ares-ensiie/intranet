@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
+
+# Gems used only for assets and not required
+# in production environments by default.
+gem 'bootstrap-sass', '~> 3.0.3.0'
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
