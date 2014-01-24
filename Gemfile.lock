@@ -318,7 +318,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-addons-rails (~> 0.1.2)
   bootstrap-datepicker-rails
-  bootstrap-sass
+  bootstrap-sass (~> 3.0.3.0)
   cancan
   chosen-rails
   coffee-rails (~> 3.2.2)
