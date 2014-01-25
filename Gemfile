@@ -2,11 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
-
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '~> 3.0.3.0'
   gem 'bootstrap-addons-rails', '~> 0.1.2'
   gem 'bootstrap-datepicker-rails'
   gem 'chosen-rails'
@@ -54,7 +53,7 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'rake'
+  gem 'rake', '~> 10.1.1'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'json_spec'

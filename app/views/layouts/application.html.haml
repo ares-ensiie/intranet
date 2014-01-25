@@ -13,21 +13,24 @@
   %meta(name="viewport" content="width=device-width, initial-scale=1.0")
 %body
   #wrap
-    .navbar.navbar-fixed-top
+    .navbar.navbar-default.navbar-fixed-top
       .navbar-inner
-        .container-fluid
-          = link_to (image_tag "logo-32px.png"), root_path, class: "brand"
-          %ul.nav
+        .container
+          = link_to (image_tag "logo-32px.png"), root_path, class: "navbar-brand"
+          %ul.navbar-nav
             %li
               %h5
-                %a Services ARES : 
-            %li 
-              %a{href: "https://bug.ares-ensiie.eu"}Bug Tracker
+                Services ARES :
             %li
-              %a{href: "https://git.ares-ensiie.eu"}Gitlab
+              %h5
+                %a{href: "https://git.ares-ensiie.eu"}Gitlab
             %li
-              %a{href: "http://wiki.ares-ensiie.eu"}Wiki 
-          %ul.nav.pull-right
+              %h5
+                %a{href: "http://about.ares-paas.eu"}PaaS
+            %li
+              %h5
+                %a{href: "http://doc.ares-ensiie.eu"}Documentation
+          %ul.navbar-nav.pull-right
             - if user_signed_in?
               %li.dropdown
                 %a.dropdown-toggle(data-toggle="dropdown")
@@ -39,10 +42,11 @@
                   %li.divider
                   %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
             - else
-              %li= link_to 'Connexion', new_user_session_path
-    .container-fluid
-      .row-fluid
-        .span3
+              %li
+                %h5= link_to 'Connexion', new_user_session_path
+    .container
+      .row
+        .col-md-2
           %ul.menu.nav.nav-list
             %li
               %a{href: root_path}
@@ -83,12 +87,12 @@
                 Strasbourg d'OR
                 %span
                   Bientôt
-        .span9
+        .col-md-10
           = yield
     #push
 
   #footer
-    .container-fluid
+    .container
       %small
         N'hésitez pas à reporter les bugs ou les idées d'améliorations sur le bug tracker merci !
       .pull-right
