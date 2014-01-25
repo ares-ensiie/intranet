@@ -1,15 +1,15 @@
 = simple_form_for @document, url: (@document.new_record? ? new_courses_document_path : courses_matter_document_path(@document.matter, @document)), html: { class: "form-horizontal" } do |f|
-  = f.input :name
-  = f.input :file, required: true
+  = f.input :name, :class => "form-control"
+  = f.input :file, :class => "form-control", required: true
   .control-group 
     = label_tag "document_matter_year", "Année ", class: "control-label"
     .controls 
       = select_tag "document_matter_year", options_for_select(%w(1A 2A 3A))
-  = f.input :matter_id
-  = f.input :type, collection: %w(Cours Examen Projet TD TP Autre)
+  = f.input :matter_id, :class => "form-control"
+  = f.input :type, :class => "form-control", collection: %w(Cours Examen Projet TD TP Autre)
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => "btn btn-primary"
 
 - if @document.matter != nil
   :coffeescript
