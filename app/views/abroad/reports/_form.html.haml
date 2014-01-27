@@ -1,0 +1,13 @@
+= simple_form_for @report do |f|
+  = f.input :country
+  = f.input :location, placeholder: "École / Université / Entreprise"
+  = f.input :type, placeholder: "Semestre / Année / Stage"
+  = f.input :begin_date, as: :date, start_year: 2009, discard_day: true
+  = f.input :end_date, as: :date, start_year: 2009, discard_day: true
+  .content-group.required
+    = f.label "Rapport (Markdown)", for: :content, required: true
+    .controls
+      = f.text_area :content, cols: 120, row: 50
+
+  .form-actions
+    = f.submit
