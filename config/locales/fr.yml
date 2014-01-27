@@ -6,6 +6,9 @@ fr:
     delete_multi: Suppressions
 
 fr:
+  time:
+    formats:
+      date: "%B %Y"
   devise:
     mailer:
       confirmation_instructions:

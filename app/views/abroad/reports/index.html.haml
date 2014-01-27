@@ -1,0 +1,21 @@
+%h1 Retour des étudiants à l'étranger
+
+%ul.reports
+  - @reports.each do |r|
+    %li.report
+      .report-title
+      = link_to abroad_report_path(r) do
+        = "#{r.country} - #{r.location} - #{r.type}"
+      .report-date
+      = "#{l r.begin_date, format: :date} à #{l r.end_date, format: :date}"
+      .report-owner
+        = "(#{r.owner.name})"
+      - if current_user == r.owner
+        .report-actions
+          = link_to "Éditer", edit_abroad_report_path(r)
+          - if current_user.is_admin?
+            = link_to "Supprimer", abroad_report_path(r), method: :delete, confirm: "Sûr ?"
+
+.actions
+  = link_to "Proposer un retour d'expérience", new_abroad_report_path
+

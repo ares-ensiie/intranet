@@ -14,7 +14,10 @@ class Ability
       user.id.eql? photo.album.author.id 
     end
     can [:read, :update, :destroy], Oauth::Application do |app|
-      app.owner.eql? current_user
+      app.owner.eql? user
+    end
+    can [:read, :update, :destroy], Abroad::Report do |report|
+      report.owner.eql? user
     end
   end
 end

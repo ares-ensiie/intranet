@@ -26,6 +26,7 @@ class User
 
   has_many :albums, class_name: "Gallery::Album", inverse_of: :author
   has_many :documents, class_name: "Courses::Document", inverse_of: :author
+  has_many :reports, class_name: "Abroad::Report", inverse_of: :owner
 
   has_many :oauth_applications, class_name: '::Oauth::Application', as: :owner
 
@@ -72,7 +73,6 @@ class User
   validates :last_name, presence: true
   validates :promotion, presence: true
 
-
   mapping do
     indexes :id
     indexes :username, analyzer: 'keyword'
@@ -93,7 +93,7 @@ class User
   end
 
   def name
-    "#{first_name} #{last_name}"
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   alias_method :is_admin?, :is_admin

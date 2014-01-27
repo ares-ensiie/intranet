@@ -1,0 +1,6 @@
+%h1="#{@report.location} - #{@report.country}"
+
+%h3="Rédigé par #{@report.owner.name}"
+
+.report-content
+  != @markdown.render @report.content
