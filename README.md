@@ -14,14 +14,16 @@
 
 ##Contribuer
 
->Note: pour MacOS la procédure d'installation utilise [Homebrew](http://brew.sh/), un gestionnaire de package très bien pensé et propre à MacOS (l'équivalent de `apt-get` sous Ubuntu). Pensez à faire `brew update` pour mettre à jour la liste des packages, avant de commencer l'installation. 
+> Note: pour MacOS la procédure d'installation utilise [Homebrew](http://brew.sh/), un gestionnaire de package très bien pensé et propre à MacOS (l'équivalent de `apt-get` sous Ubuntu). Pensez à faire `brew update` et `brew upgrade` pour mettre à jour vos packages, avant de commencer l'installation. 
 De la même façon pensez à faire `sudo apt-get update` sur Debian.
+
+
 
 ###Installation
 
 Installer ruby:
 
-Il ne suffit pas de faire: **Ne faites pas la commande suivante!**
+Il ne suffit pas de faire: (**ne faites pas la commande suivante!**)
 
 - MacOS: 
 `brew install ruby`
@@ -37,7 +39,7 @@ Pour pallier à ce problème il faut installer Ruby avec `rbenv`, un utilitaire 
 
 - Debian:
 
-```
+```shell 
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -54,7 +56,7 @@ Il suffit alors d'installer Ruby avec `rbenv`:
 
 - MacOS/Debian:
 
-```
+```shell
 rbenv install 2.0.0-p353
 rbenv global 2.0.0-p353
 ruby -v
@@ -82,7 +84,7 @@ L'intranet utilise `elasticsearch`, un plugin utilisé par Foursquare et Github 
 
 - Debian:
 
-```
+```shell
 wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.deb
 sudo dpkg -i elasticsearch-0.90.7.deb
 ```
@@ -108,6 +110,8 @@ Pour l'installer:
 ###Développement
 Pour lancer le serveur: 
 `rails server`
+ou 
+`rails s`
 	
 Par défaut le serveur se lance sur le port 3000. On peut voir le résultat sur [http://localhost:3000](http://localhost:3000]).
 
