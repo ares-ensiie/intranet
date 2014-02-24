@@ -2,6 +2,12 @@ class Admin::UsersController < Admin::AdminController
   load_and_authorize_resource through: :promotion, shallow: true
 
   def index
+    if params.has_key? "promotion_id"
+      @promotion = Promotion.find(params["promotion_id"]) || current_user.promotion
+    else
+      @promotion = current_user.promotion
+    end
+
     @users = @promotion.try(:students) || User.all
   end
 
