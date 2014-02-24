@@ -1,6 +1,5 @@
 class Admin::UsersController < Admin::AdminController
-  load_and_authorize_resource :promotion
-  load_and_authorize_resource through: :promotions, shallow: true
+  load_and_authorize_resource through: :promotion, shallow: true
 
   def index
     @users = @promotion.try(:students) || User.all
