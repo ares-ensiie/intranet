@@ -6,6 +6,7 @@ class Developers::Oauth::ApplicationsController < Doorkeeper::ApplicationsContro
   layout 'developers'
 
   def new
+    @application = Oauth::Application.new
   end
 
   def index
