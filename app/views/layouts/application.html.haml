@@ -37,7 +37,7 @@
                   %li= link_to 'Mon compte', edit_account_path
                   %li= link_to 'Applications', oauth_authorized_applications_path
                   %li.divider
-                  %li= link_to 'Deconnexion', destroy_user_session_path, method: :delete
+                  %li= link_to 'Déconnexion', destroy_user_session_path, method: :delete
             - else
               %li= link_to 'Connexion', new_user_session_path
     .container-fluid
