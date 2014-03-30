@@ -1,11 +1,11 @@
 //= require_self
 //= require_tree ./courses
 //= require_tree ./gallery
+//= require_tree ./abroad
 //= require ./account
 //= require ./brand
 
 @import bootstrap
-@import bootstrap-responsive
 @import bootstrap/image-gallery
 @import bootstrap-datepicker
 @import jquery.fileupload-ui
@@ -14,17 +14,26 @@
 body, html
   height: 100%
 
+.navbar-nav
+  padding-top:  15px
+  padding-left: 5px
+  li
+    list-style: none
+    a
+      padding-left: 20px
+
 .menu
   top: 40px 
   margin-left: 10px
+  margin-top: 20px
   margin-bottom: 35px
   border-radius: 6px
   li:first-child
     a, h5, p
-      border-radius: 6px 6px 0 0
+      border-radius: 4px 4px 0 0
   li:last-child
     a, h5, p
-      border-radius: 0 0 6px 6px
+      border-radius: 0 0 4px 4px
   li
     line-height: 20px
     display: list-item
@@ -56,14 +65,13 @@ body, html
   height: auto !important
   height: 100%
   margin: 0 auto -32px
-  > .container-fluid
-    padding-top: 60px
+  > .container
+    padding-top: 80px
 
 #push
   height: 32px
 
 #footer
-  height: 32px
   background-color: #f2f2f2
   .container
     margin-top: 10px 
@@ -76,3 +84,8 @@ body, html
   margin-left: auto
   margin-right: auto
   margin-bottom: 15px
+
+.row
+  .col-md-10
+    .page-header
+      margin-top: 10px

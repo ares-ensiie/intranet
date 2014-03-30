@@ -55,6 +55,12 @@ IntranetSXB::Application.routes.draw do
     end
   end
 
+  # /abroad
+  namespace :abroad do
+    root to: 'reports#index'
+    resources :reports
+  end
+
   # Add a document without taking care of the matter
   match "/courses/new" => "courses/documents#new", via: :get, as: :new_courses_document
   # /courses => courses_path
