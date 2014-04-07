@@ -110,10 +110,10 @@ Pour l'installer:
 
 ###Seeds
 Les seeds sont des données d'exemple pratique pour la phase de dévelopement.
-Pour les créer, faire:
-`rake db:seed`
+Pour créer la base de données et créer les seeds: `rake db:setup`.
+Si la base de données existe déjà: `rake db:seed`.
 
-Si une erreur du genre `username must be unique` apparait, c'est que des données de type User existent déjà en base de données.
+Si une erreur du genre `User: username must be unique` apparait, c'est que des données de type User existent déjà en base de données.
 Il faut alors faire dans mongo: `db.users.remove()`.
 
 On peut vérifier que les données ont bien été créées en base de données par deux moyens:
