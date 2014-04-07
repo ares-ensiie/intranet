@@ -1,29 +1,30 @@
 Promotion.create(name: "2012")
+Promotion.create(name: "2013")
+Promotion.create(name: "2014")
 
 User.create(
   username: "toto",
   first_name: "toto",
   last_name: "toto",
-  nick_name: "toto",
   gender: "F",
   email: "toto@mail.com",
   #is_admin: true,
   promotion: Promotion.first,
   password: "oooooo",
-  password_confirmation: "oooooo"
+  password_confirmation: "oooooo",
+  confirmed_at: DateTime.now
 )
 
-user = User.new()
-user.username = "titi"
-user.first_name = "titi"
-user.last_name = "titi"
-user.nick_name = "titi"
-user.gender = "M"
-user.email = "titi@mail.com"
+
+User.create(
+  username: "titi",
+  first_name: "titi",
+  last_name: "titi",
+  gender: "M",
+  email: "titi@mail.com",
   #is_admin: true,
-user.promotion = Promotion.first
-user.password = "i" * 6
-user.password_confirmation = "i" * 6
-
-
-user.save!
+  promotion: Promotion.last,
+  password: "iiiiii",
+  password_confirmation: "iiiiii",
+  confirmed_at: DateTime.now
+)
