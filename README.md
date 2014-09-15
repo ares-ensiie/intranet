@@ -57,8 +57,8 @@ Il suffit alors d'installer Ruby avec `rbenv`:
 - MacOS/Debian:
 
 ```shell
-rbenv install 2.0.0-p353
-rbenv global 2.0.0-p353
+rbenv install 2.1.2
+rbenv global 2.1.2
 ruby -v
 ```
 				
