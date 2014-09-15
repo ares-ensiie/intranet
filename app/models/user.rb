@@ -125,4 +125,13 @@ class User
     return Courses::Document.where(author: self).count
   end
 
+  rails_admin do
+    list do
+      field :username
+      field :promotion
+      field :email
+      field :first_name
+      field :last_name
+    end
+  end
 end
