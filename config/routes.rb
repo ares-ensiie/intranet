@@ -15,8 +15,8 @@ IntranetSXB::Application.routes.draw do
   }
 
   constraints subdomain: subdomains[:api] do
-    root to: redirect(subdomain: subdomains[:developers])
-    scope module: :api do
+    scope module: :api, as: :api do
+      root to: redirect(subdomain: subdomains[:developers])
       scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
         resources :users, only: :show do
           get :self, on: :collection

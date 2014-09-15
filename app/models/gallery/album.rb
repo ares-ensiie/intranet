@@ -10,6 +10,4 @@ class Gallery::Album
 
   belongs_to :author, :class_name => "User", :inverse_of => :albums
   has_many :photos, :class_name => "Gallery::Photo"
-
-  attr_accessible :name, :desc, :date
 end
