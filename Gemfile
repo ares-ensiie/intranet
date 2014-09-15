@@ -71,3 +71,5 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'meta_request'
 end
+
+gem 'rails_admin'
