@@ -27,7 +27,7 @@ gem 'mongoid', '~> 4.0.0'
 # Authentication & authorization
 gem 'devise'
 gem 'doorkeeper'
-gem 'cancan'
+gem 'cancancan'
 
 # Templates
 gem 'placeholder'

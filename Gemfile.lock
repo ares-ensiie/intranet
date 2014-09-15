@@ -47,7 +47,7 @@ GEM
     bson (2.3.0)
     builder (3.2.2)
     callsite (0.0.11)
-    cancan (1.6.10)
+    cancancan (1.9.2)
     chosen-rails (1.0.0)
       coffee-rails (>= 3.2)
       compass-rails (>= 1.0)
@@ -318,7 +318,7 @@ DEPENDENCIES
   bootstrap-addons-rails (~> 0.1.2)
   bootstrap-datepicker-rails
   bootstrap-sass
-  cancan
+  cancancan
   chosen-rails
   coffee-rails (~> 4.0.1)
   database_cleaner
