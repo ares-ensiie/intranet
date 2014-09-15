@@ -9,7 +9,7 @@ class Promotion
 
   slug :name
 
-  default_scope -> { order_by(name: :asc) }
+  default_scope -> { order_by(name: :desc) }
 
   validates :name, presence: true, uniqueness: true
 end
