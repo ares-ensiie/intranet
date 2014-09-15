@@ -64,7 +64,7 @@ class User
 
   slug :username
 
-  default_scope order_by([:username, :asc])
+  default_scope -> { order_by([:username, :asc]) }
 
   validates :username, uniqueness: true, presence: true
   validates :email, presence: true
