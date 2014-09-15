@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
     if @user.avatar_file_name != nil and params[:user].has_key? :delete_avatar and params[:user][:delete_avatar]  then
       @user.avatar.clear
     end
-    @user.update_attributes(params[:user])
+    @user.update_attributes(resource_params)
     respond_with @user, location: edit_account_path
   end
 
@@ -22,5 +22,10 @@ class AccountsController < ApplicationController
       flash[:success] = "Mot de passe mis à jour."
     end
     respond_with @user, location: edit_account_path
+  end
+
+  protected
+  def resource_params
+    params.require(:user).permit(:gender, :avatar)
   end
 end
