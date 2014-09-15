@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - '2.0.0'
+  - '2.1.2'
 env: DEVISE_SECRET_KEY=72c548127c5eae0db29d5e84e7705c73c3560fa88f5e05415fae591b1b6d879850203cca211a032d0744df479961ab7803c8050d9a102d2c2b3b661189d8c0bd
 before_script:
   - bundle exec rake tmp:create
