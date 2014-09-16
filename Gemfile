@@ -22,7 +22,7 @@ gem 'inherited_resources'
 gem 'rails-i18n'
 
 # Database
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid', github: 'mongoid/mongoid'
 
 # Authentication & authorization
 gem 'devise'
