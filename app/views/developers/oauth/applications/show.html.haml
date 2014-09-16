@@ -8,7 +8,7 @@
 
 %h2 URL :
 %pre
-  - link = user_url current_user, subdomain: "api", client_id: @application.uid, client_secret: @application.secret
+  - link = api_user_url current_user, subdomain: "api", client_id: @application.uid, client_secret: @application.secret
   = link_to link, link
 
 %h2 Supprimer l'application
