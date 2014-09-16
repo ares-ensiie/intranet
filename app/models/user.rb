@@ -17,11 +17,6 @@ class User
     :trackable, :validatable, :confirmable,
     :recoverable
 
-  attr_accessible :username, :email, :avatar,
-    :first_name, :last_name, :gender,
-    :password, :password_confirmation, :remember_me,
-    :confirmed_at, :promotion
-
   belongs_to :promotion, inverse_of: :students
 
   has_many :albums, class_name: "Gallery::Album", inverse_of: :author
@@ -130,4 +125,13 @@ class User
     return Courses::Document.where(author: self).count
   end
 
+  rails_admin do
+    list do
+      field :username
+      field :promotion
+      field :email
+      field :first_name
+      field :last_name
+    end
+  end
 end

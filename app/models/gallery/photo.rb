@@ -7,7 +7,6 @@ class Gallery::Photo
     photo_file_name.to_param
   end
 
-  attr_accessible :photo 
   has_mongoid_attached_file :photo, 
     styles: { 
       thumb_square: "#{Rails.configuration.thumb_height.to_s}x#{Rails.configuration.thumb_height.to_s}#" ,

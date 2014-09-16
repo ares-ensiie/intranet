@@ -15,8 +15,8 @@ IntranetSXB::Application.routes.draw do
   }
 
   constraints subdomain: subdomains[:api] do
-    root to: redirect(subdomain: subdomains[:developers])
-    scope module: :api do
+    scope module: :api, as: :api do
+      root to: redirect(subdomain: subdomains[:developers])
       scope module: :v1, constraints: ApiConstraint.new(version: 1, default: :true), format: :json do
         resources :users, only: :show do
           get :self, on: :collection
@@ -28,17 +28,7 @@ IntranetSXB::Application.routes.draw do
   end
 
   constraints subdomain: subdomains[:admin] do
-    scope module: :admin, as: :admin do
-      root to: 'users#index'
-      resources :albums do
-        post :release
-        post :unrelease
-      end
-      resources :users
-      resources :promotions do
-        resources :users, path: 'students', only: :index
-      end
-    end
+    mount RailsAdmin::Engine => '/', as: 'rails_admin'
   end
 
   namespace :trombi do

@@ -1,33 +1,33 @@
 source 'https://rubygems.org'
 
 ruby '2.1.2'
-gem 'rails', '3.2.13'
+gem 'rails', '4.1.6'
 
-group :assets do
-  gem 'sass-rails', '~> 3.2.5'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'bootstrap-sass'
-  gem 'bootstrap-addons-rails', '~> 0.1.2'
-  gem 'bootstrap-datepicker-rails'
-  gem 'chosen-rails'
-  gem 'jquery-rails'
-  gem 'jquery-fileupload-rails'
-  gem 'select2-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'asset_sync' # sync assets with s3 or openstack
-  gem 'favicon_maker'
-end
+gem 'sass-rails', '~> 4.0.3'
+gem 'coffee-rails', '~> 4.0.1'
+gem 'bootstrap-sass'
+gem 'bootstrap-addons-rails', '~> 0.1.2'
+gem 'bootstrap-datepicker-rails'
+gem 'chosen-rails'
+gem 'jquery-rails'
+gem 'jquery-fileupload-rails'
+gem 'select2-rails'
+gem 'uglifier', '>= 1.0.3'
+gem 'asset_sync' # sync assets with s3 or openstack
+gem 'favicon_maker'
+gem 'turbolinks'
+gem 'inherited_resources'
 
 # i18n
 gem 'rails-i18n'
 
 # Database
-gem 'mongoid', '~> 3.1.0'
+gem 'mongoid', github: 'mongoid/mongoid'
 
 # Authentication & authorization
 gem 'devise'
-gem 'doorkeeper'
-gem 'cancan'
+gem 'doorkeeper', '~> 1.4.0'
+gem 'cancancan'
 
 # Templates
 gem 'placeholder'
@@ -46,7 +46,6 @@ gem 'mongoid_slug'
 gem 'kaminari' # pagination
 gem 'tire' # ElasticSearch
 gem 'fog'
-gem 'strong_parameters'
 
 group :production, :staging do
   gem 'newrelic_rpm'
@@ -62,7 +61,6 @@ group :development, :test do
   gem 'mongoid-rspec'
   gem 'sextant'
   gem 'parallel_tests'
-  gem 'zeus-parallel_tests'
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
 
@@ -73,3 +71,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'meta_request'
 end
+
+gem 'rails_admin'
+gem 'rails_admin-i18n'
+gem 'rollbar'
+gem 'rails_12factor'
