@@ -26,7 +26,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 # Authentication & authorization
 gem 'devise'
-gem 'doorkeeper'
+gem 'doorkeeper', '~> 1.4.0'
 gem 'cancancan'
 
 # Templates
