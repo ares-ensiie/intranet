@@ -10,6 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload
@@ -21,5 +22,7 @@
 //= require jquery.imageloaded
 //= require masonry
 //= require select2
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
 //= require_self
