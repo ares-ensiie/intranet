@@ -107,6 +107,38 @@ Pour l'installer:
 - Debian:
 `sudo apt-get install mongodb-10gen`
 
+
+###Seeds
+Les seeds sont des données d'exemple pratique pour la phase de dévelopement.
+Pour créer la base de données et créer les seeds: `rake db:setup`.
+Si la base de données existe déjà: `rake db:seed`.
+
+Si une erreur du genre `User: username must be unique` apparait, c'est que des données de type User existent déjà en base de données.
+Il faut alors faire dans mongo: `db.users.remove()`.
+
+On peut vérifier que les données ont bien été créées en base de données par deux moyens:
+
+- Rails: faire `rails c` puis par exemple pour User:
+
+```
+User.all
+User.first
+```
+
+- Mongo: faire `mongo` puis par exemple pour User:
+
+```
+use intranet_sxb_development
+db.users.find()
+```
+
+PS1: Les seeds pour User esquivent la phase de confirmation du compte via l'attribut `confirmed_at`.
+Pour tester cette phase, il suffit d'enlever cet attribut des seeds ou de le mettre à `nil`.
+
+PS2: Certains attributs ne peuvent être assignés directement, car ils sont protégés.
+Pour qu'un attribut soit assignable, il faut qu'il y ait la mention `attr_accessible :mon_attribut` dans le model.
+
+
 ###Développement
 Pour lancer le serveur: 
 `rails server`
