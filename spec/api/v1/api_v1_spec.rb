@@ -23,6 +23,31 @@ describe Api::V1 do
     end
   end
 
+  describe 'get myself' do
+    # GET /users/self
+    let(:access_token) { FactoryGirl.create :access_token, resource_owner_id: FactoryGirl.create(:user).id }
+    describe 'without access token' do
+      let!(:request) { get "#{api_host}/users/self" }
+
+      subject { last_response }
+
+      its(:status) { should be 401 }
+    end
+    describe 'with access_token' do
+      let!(:request) { get "#{api_host}/users/self?access_token=#{access_token.token}" }
+
+      subject { last_response }
+
+      its(:status) { should be 200 }
+      its(:body) { should have_json_path 'id' }
+      its(:body) { should have_json_path 'username' }
+      its(:body) { should have_json_path 'email' }
+      its(:body) { should have_json_path 'first_name' }
+      its(:body) { should have_json_path 'last_name' }
+      its(:body) { should have_json_path 'promotion' }
+    end
+  end
+
   describe 'promotion resource' do
     # GET /promotions
     describe 'get all promotions' do
